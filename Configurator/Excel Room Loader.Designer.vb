@@ -34,6 +34,7 @@ Partial Class frmExcel_Room_Loader
         Me.colType = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colIP = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.RL_btnBrowseExcel = New System.Windows.Forms.Button()
+        Me.openProgram = New System.Windows.Forms.OpenFileDialog()
         Me.RL_Flags.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -160,4 +161,5 @@ Partial Class frmExcel_Room_Loader
     Friend WithEvents colType As System.Windows.Forms.ColumnHeader
     Friend WithEvents colIP As System.Windows.Forms.ColumnHeader
     Friend WithEvents RL_btnBrowseExcel As System.Windows.Forms.Button
+    Friend WithEvents openProgram As System.Windows.Forms.OpenFileDialog
 End Class

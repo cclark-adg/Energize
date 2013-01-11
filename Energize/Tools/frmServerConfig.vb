@@ -14,8 +14,10 @@
 
     Private Sub Save_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
 
-        MainWindow.PASSWORD = tbPassword.Text
-        frmMain.USERNAME = tbUsername.Text
-        frmMain.SERVER_ADDRESS = tbServerName.Text
+        Energize.PASSWORD = tbPassword.Text
+        Energize.USERNAME = tbUsername.Text
+        Energize.SERVER_ADDRESS = tbServerName.Text
     End Sub
+
+    
 End Class

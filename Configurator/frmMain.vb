@@ -136,123 +136,6 @@ Public Class frmMain
 
 #Region "Applications"
 
-#Region "Excel Room Loader"
-
-    Private Sub btnBrowseExcel_Click(sender As System.Object, e As System.EventArgs) Handles RL_btnBrowseExcel.Click
-        Dim xcel As New Excel.Application
-        Dim workbook As Excel.Workbook
-        Dim sheet As Excel.Worksheet
-        Dim filepath As String
-
-        openProgram.ShowDialog()
-        filepath = openProgram.FileName
-        If filepath.Length <> 0 Then
-            workbook = xcel.Workbooks.Open(filepath)
-            sheet = DirectCast(workbook.Sheets(1), Excel.Worksheet)
-            Dim ecellA As Excel.Range = sheet.UsedRange
-            Dim ecellB As Excel.Range
-            Dim eCellC As Excel.Range
-            Dim eCellD As Excel.Range
-            Dim eCellE As Excel.Range
-
-
-            frmProgressBar.Show()
-            frmProgressBar.setMax(CInt(sheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell).Row) - 2)
-            Try
-                For i As Integer = 2 To CInt(sheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell).Row)
-                    frmProgressBar.incrementBar(1)
-                    ecellA = sheet.Range("a" & i)
-                    ecellB = sheet.Range("b" & i)
-                    eCellC = sheet.Range("c" & i)
-                    eCellD = sheet.Range("d" & i)
-                    eCellE = sheet.Range("e" & i)
-
-                    Dim itm As New ListViewItem(ecellA.Value.ToString)
-                    itm.SubItems.Add(ecellB.Value.ToString)
-                    itm.SubItems.Add(eCellC.Value.ToString)
-                    itm.SubItems.Add(eCellD.Value.ToString)
-                    itm.SubItems.Add(eCellE.Value.ToString)
-                    RL_lsvRooms.Items.Add(itm)
-                Next
-            Catch ex As Exception
-
-            End Try
-            workbook.Close()
-            xcel.Workbooks.Close()
-            xcel.Quit()
-            xcel = Nothing
-            workbook = Nothing
-        End If
-    End Sub
-
-
-    Private Sub btnLoad_Click(sender As System.Object, e As System.EventArgs) Handles RL_btnLoad.Click
-        Dim rmAdd As Integer = 0
-        Dim rmNotAdded As Integer = 0
-        Dim rmAlreadyExists As Integer = 0
-        frmProgressBar.Show()
-        frmProgressBar.setMax(RL_lsvRooms.Items.Count)
-        If RL_cbLoadDevicesPerRoom.Checked = True Then
-            frmProgressBar.pbLoading.Maximum += RL_lsvRooms.Items.Count
-        End If
-        'Add each room into the database that has been read from the excel spreadsheet.
-        For Each ls As ListViewItem In RL_lsvRooms.Items
-            frmProgressBar.incrementBar(1)
-            sqlCmd.CommandText = "Insert into tbl_Rooms(Building,floor,room_name,IP_Address,Room_Type_ID) Values( " _
-                + "'" + ls.SubItems(0).Text _
-                + "','" + ls.SubItems(1).Text _
-                + "','" + ls.SubItems(2).Text _
-                + "','" + ls.SubItems(4).Text _
-                + "',(SELECT id From tbl_RoomType Where RoomType = '" + ls.SubItems(3).Text + "'));"
-            If sqlCmd.Connection.State = ConnectionState.Open Then
-                Try
-                    sqlCmd.ExecuteNonQuery()
-                    rmAdd += 1
-                Catch ex As SqlException
-                    'If there is a room that already exists in the database, we get this error code, add it for display uses
-                    If ex.ErrorCode = -2146232060 Then
-                        rmAlreadyExists += 1
-                    End If
-                    rmNotAdded += 1
-                Catch ex As Exception
-                    MessageBox.Show("Error inserting rooms into database: " + ex.ToString)
-                End Try
-
-            End If
-
-        Next
-        '***************        Definetly possible to move to a SPR
-        'If the user checks the load devices per room type check box we proceed with the following code segment
-        If RL_cbLoadDevicesPerRoom.Checked = True Then
-            'Go through each room that is in the list view read from the excel sheet
-            For Each ls As ListViewItem In RL_lsvRooms.Items
-                frmProgressBar.incrementBar(1)
-                If sqlCmd.Connection.State = ConnectionState.Open Then
-                    Try
-                        Dim itms As New List(Of Integer())
-                        'Find each device type and local id based upon the room type and add it to a list 
-                        sqlCmd.CommandText = "Select id,device_type_id,local_id_number from tbl_Rooms join tbl_local_ids on tbl_local_ids.room_type_id = tbl_rooms.Room_Type_ID  and Room_Name = 'Room " & ls.SubItems(1).Text & "';"
-                        sqlReader = sqlCmd.ExecuteReader()
-                        While sqlReader.Read()
-                            itms.Add(New Integer() {sqlReader(0), sqlReader(1), sqlReader(2)})
-                        End While
-                        sqlReader.Close()
-                        'go through each of those items, and add them to the database in the devices table
-                        For Each i As Integer() In itms
-                            sqlCmd.CommandText = "Insert into tbl_devices values(" & i(0) & "," & i(1) & "," & i(2) & ");"
-                            sqlCmd.ExecuteNonQuery()
-                        Next
-                    Catch ex As SqlException
-                        MessageBox.Show("sql exception" & ex.ToString)
-                    End Try
-                End If
-            Next
-        End If
-        MessageBox.Show(rmAdd.ToString + " Rooms were added." + vbCrLf + rmAlreadyExists.ToString + " Rooms already exists. Conflict of name." + vbCrLf + rmNotAdded.ToString + " Rooms were not added.")
-    End Sub
-
-#End Region
-
 #Region "Room Type Editor"
 
     Private Sub updateRoomTypes()
@@ -545,30 +428,30 @@ Public Class frmMain
                                 & " from tbl_Device_Types " _
                                 + " left Join" _
                                 + " tbl_alarms on tbl_device_types.id=tbl_alarms.Device_type_id"
-        'If SQLCONNECTED Then
-        '    Try
-        '        sqlReader = sqlCmd.ExecuteReader()
-        '        While sqlReader.Read()
-        '            Dim tmp As String = "0"
-        '            Dim tmp1 As String = "null"
-        '            Dim wrnThresh, wrnTimF, wrnCode As String
-        '            If sqlReader(8).ToString = "" Then wrnThresh = "null" Else wrnThresh = sqlReader(8).ToString
-        '            If sqlReader(9).ToString = "" Then wrnTimF = "null" Else wrnTimF = sqlReader(9).ToString
-        '            If sqlReader(10).ToString = "" Then wrnCode = "null" Else wrnCode = sqlReader(10).ToString
-        '            If sqlReader(5).ToString = "True" Then tmp = "1"
-        '            If Not sqlReader(6).ToString = "" Then tmp1 = sqlReader(6)
-        '            AE_deviceTypeList.Add(New String() {sqlReader(0).ToString, sqlReader(1).ToString, sqlReader(2).ToString, sqlReader(3).ToString, sqlReader(4).ToString, tmp, tmp1, sqlReader(7).ToString, _
-        '                                                wrnThresh, wrnTimF, wrnCode})
-        '            AE_lbDevices.Items.Add(sqlReader(1))
-        '        End While
-        '    Catch ex As SqlException
-        '        MessageBox.Show("SQL Error: " + ex.ToString)
-        '    Catch ex As Exception
-        '        MessageBox.Show("Error:" + ex.ToString)
-        '    Finally
-        '        sqlReader.Close()
-        '    End Try
-        'End If
+        If SQLCONNECTED Then
+            Try
+                sqlReader = sqlCmd.ExecuteReader()
+                While sqlReader.Read()
+                    Dim tmp As String = "0"
+                    Dim tmp1 As String = "null"
+                    Dim wrnThresh, wrnTimF, wrnCode As String
+                    If sqlReader(8).ToString = "" Then wrnThresh = "null" Else wrnThresh = sqlReader(8).ToString
+                    If sqlReader(9).ToString = "" Then wrnTimF = "null" Else wrnTimF = sqlReader(9).ToString
+                    If sqlReader(10).ToString = "" Then wrnCode = "null" Else wrnCode = sqlReader(10).ToString
+                    If sqlReader(5).ToString = "True" Then tmp = "1"
+                    If Not sqlReader(6).ToString = "" Then tmp1 = sqlReader(6)
+                    AE_deviceTypeList.Add(New String() {sqlReader(0).ToString, sqlReader(1).ToString, sqlReader(2).ToString, sqlReader(3).ToString, sqlReader(4).ToString, tmp, tmp1, sqlReader(7).ToString, _
+                                                        wrnThresh, wrnTimF, wrnCode})
+                    AE_lbDevices.Items.Add(sqlReader(1))
+                End While
+            Catch ex As SqlException
+                MessageBox.Show("SQL Error: " + ex.ToString)
+            Catch ex As Exception
+                MessageBox.Show("Error:" + ex.ToString)
+            Finally
+                sqlReader.Close()
+            End Try
+        End If
         
 
     End Sub
@@ -1374,23 +1257,41 @@ Public Class frmMain
 
 #End Region
 
+#Region "Tools"
+
+    'Open the Database setup excel room loader 
+    Private Sub DatabaseSetupToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DatabaseSetupToolStripMenuItem.Click
+        frmExcel_Room_Loader.Show()
+        frmExcel_Room_Loader.loadExcelLoader(sqlCmd, sqlReader)
+    End Sub
+
+    'Open the SQL Server configuration window and pass the server address username and password to be updated
+    Private Sub SQLServerConfigurationToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SQLServerConfigurationToolStripMenuItem.Click
+        frmServerConfig.Show()
+        frmServerConfig.loadForm(SERVER_ADDRESS, USERNAME, PASSWORD)
+    End Sub
+#End Region
+
 #Region "Main Form Event Methods"
     Private Sub ExitToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ExitToolStripMenuItem.Click
         Application.Exit()
     End Sub
     Private Sub tpvConfigurator_TabIndexChanged(sender As System.Object, e As System.EventArgs) Handles tpvConfigurator.SelectedIndexChanged
-        Select Case tpvConfigurator.SelectedIndex
-            Case 0
-                updateDeviceTypes()
-            Case 1
-                updateRoomTypes()
-            Case 2
-            Case 3
-                updateRoomList()
-                updateTVRoomListByFloor()
-            Case 4
-                updateEventList()
-        End Select
+        If SQLCONNECTED Then
+            Select Case tpvConfigurator.SelectedIndex
+                Case 0
+                    updateDeviceTypes()
+                Case 1
+                    updateRoomTypes()
+                Case 2
+                Case 3
+                    updateRoomList()
+                    updateTVRoomListByFloor()
+                Case 4
+                    updateEventList()
+            End Select
+        End If
+
     End Sub
     Private Sub frmMain_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
@@ -1442,10 +1343,6 @@ Public Class frmMain
 
 
 
-    Private Sub RE_btnSendProgram_Click(sender As System.Object, e As System.EventArgs) Handles RE_btnSendProgram.Click
-
-    End Sub
-
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
         Dim eor As String = ""
         For Each s As VptSession In sessions
@@ -1455,12 +1352,14 @@ Public Class frmMain
     End Sub
 
     
-    Private Sub DatabaseSetupToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DatabaseSetupToolStripMenuItem.Click
+    
+
+   
+    Private Sub TableLayoutPanel4_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles TableLayoutPanel4.Paint
 
     End Sub
 
-    Private Sub SQLServerConfigurationToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SQLServerConfigurationToolStripMenuItem.Click
-        frmServerConfig.Show()
-        frmServerConfig.loadForm(SERVER_ADDRESS, USERNAME, PASSWORD)
+    Private Sub Button2_Click(sender As System.Object, e As System.EventArgs) Handles SM_btnNew.Click
+
     End Sub
 End Class
