@@ -80,6 +80,8 @@ Partial Class Energize
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SQLServerConfigurationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.NotifyIconEnergize = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.cmsNotifyIcon = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -88,8 +90,6 @@ Partial Class Energize
         Me.AcknowledgedAlarmsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.WarningsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SQLServerConfigurationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmsLvAlarms.SuspendLayout()
         Me.cmsKPI.SuspendLayout()
         Me.keyPointsOfInterest.SuspendLayout()
@@ -652,6 +652,19 @@ Partial Class Energize
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(92, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
+        'ToolsToolStripMenuItem
+        '
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SQLServerConfigurationToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
+        Me.ToolsToolStripMenuItem.Text = "Tools"
+        '
+        'SQLServerConfigurationToolStripMenuItem
+        '
+        Me.SQLServerConfigurationToolStripMenuItem.Name = "SQLServerConfigurationToolStripMenuItem"
+        Me.SQLServerConfigurationToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.SQLServerConfigurationToolStripMenuItem.Text = "SQL Server Configuration"
+        '
         'StatusStrip1
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.StatusStrip1, 4)
@@ -702,19 +715,6 @@ Partial Class Energize
         Me.WarningsToolStripMenuItem.Name = "WarningsToolStripMenuItem"
         Me.WarningsToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
         Me.WarningsToolStripMenuItem.Text = "Warnings"
-        '
-        'ToolsToolStripMenuItem
-        '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SQLServerConfigurationToolStripMenuItem})
-        Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
-        Me.ToolsToolStripMenuItem.Text = "Tools"
-        '
-        'SQLServerConfigurationToolStripMenuItem
-        '
-        Me.SQLServerConfigurationToolStripMenuItem.Name = "SQLServerConfigurationToolStripMenuItem"
-        Me.SQLServerConfigurationToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
-        Me.SQLServerConfigurationToolStripMenuItem.Text = "SQL Server Configuration"
         '
         'Energize
         '

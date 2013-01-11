@@ -9,6 +9,7 @@ Public Class Energize
 
     Private newMsg As Boolean = False
     Public alertList As New List(Of String)
+    Private CONNECTED As Boolean
     Dim alarms As New List(Of String())
 
     Dim alarmCodeList As New List(Of String)
@@ -16,8 +17,8 @@ Public Class Energize
 
     Public SERVER_ADDRESS, USERNAME, PASSWORD As String
 
-    Dim sqlCmd As New SqlCommand
-    Dim sqlReader As SqlDataReader
+    Public sqlCmd As New SqlCommand
+    Public sqlReader As SqlDataReader
 
     Private Sub Energize_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         NotifyIconEnergize.Visible = False
@@ -34,39 +35,40 @@ Public Class Energize
         USERNAME = "Test"
         PASSWORD = "adg10990"
 
-
         sqlCmd.Connection = connectToDatabase()
-        'some sql statements to get every warning code from sql server (use tbl_alarms) and a statement to get every event id from tbl_events
-        'these will be used for KPI and for color coding.
-        sqlCmd.CommandText = "Select alarm_code from tbl_alarms join tbl_events on tbl_alarms.warning_event_id = tbl_events.id"
-        Try
-            sqlReader = sqlCmd.ExecuteReader()
-            While sqlReader.Read()
-                warningCodeList.Add(sqlReader(0).ToString)
-            End While
-            sqlReader.Close()
 
-            sqlCmd.CommandText = "Select alarm_code from tbl_events where id <> 1"
-            sqlReader = sqlCmd.ExecuteReader()
-            While sqlReader.Read()
-                If warningCodeList.Count > 0 Then
-                    For Each a As String In warningCodeList
-                        If a <> sqlReader(0) Then
-                            alarmCodeList.Add(sqlReader(0))
-                        End If
-                    Next
-                Else
-                    alarmCodeList.Add(sqlReader(0))
-                End If
-                
-            End While
-            sqlReader.Close()
-        Catch ex As Exception
+        If CONNECTED Then
+            'some sql statements to get every warning code from sql server (use tbl_alarms) and a statement to get every event id from tbl_events
+            'these will be used for KPI and for color coding.
+            sqlCmd.CommandText = "Select alarm_code from tbl_alarms join tbl_events on tbl_alarms.warning_event_id = tbl_events.id"
+            Try
+                sqlReader = sqlCmd.ExecuteReader()
+                While sqlReader.Read()
+                    warningCodeList.Add(sqlReader(0).ToString)
+                End While
+                sqlReader.Close()
 
-        End Try
-        
+                sqlCmd.CommandText = "Select alarm_code from tbl_events where id <> 1"
+                sqlReader = sqlCmd.ExecuteReader()
+                While sqlReader.Read()
+                    If warningCodeList.Count > 0 Then
+                        For Each a As String In warningCodeList
+                            If a <> sqlReader(0) Then
+                                alarmCodeList.Add(sqlReader(0))
+                            End If
+                        Next
+                    Else
+                        alarmCodeList.Add(sqlReader(0))
+                    End If
 
-        updateAlarm()
+                End While
+                sqlReader.Close()
+            Catch ex As Exception
+
+            End Try
+            updateAlarm()
+        End If
+
 
     End Sub
     Private Sub SessionComplete(ByVal nTransactionID As _
@@ -81,8 +83,10 @@ Public Class Energize
 
     'Main thread used to scan the database for alarms
     Private Sub tmrAlarm_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrAlarm.Tick
+        If CONNECTED Then
+            updateAlarm()
+        End If
 
-        updateAlarm()
 
     End Sub
 
@@ -302,8 +306,10 @@ Public Class Energize
 
         Try
             SqlConnection.Open()
+            CONNECTED = True
         Catch ex As SqlException
             MsgBox("Error Connecting to Database: " & ex.Message)
+            CONNECTED = False
         End Try
         Return SqlConnection
 
@@ -400,4 +406,9 @@ Public Class Energize
     End Sub
     
    
+    Private Sub SQLServerConfigurationToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SQLServerConfigurationToolStripMenuItem.Click
+        frmServerConfig.BringToFront()
+        frmServerConfig.loadForm(SERVER_ADDRESS, USERNAME, PASSWORD)
+
+    End Sub
 End Class
