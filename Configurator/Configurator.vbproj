@@ -107,16 +107,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Excel Room Loader.Designer.vb">
+    <Compile Include="Tools\Excel Room Loader.Designer.vb">
       <DependentUpon>Excel Room Loader.vb</DependentUpon>
     </Compile>
-    <Compile Include="Excel Room Loader.vb">
+    <Compile Include="Tools\Excel Room Loader.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProgramLoad.Designer.vb">
+    <Compile Include="Tools\frmLoyaltyProgram.Designer.vb">
+      <DependentUpon>frmLoyaltyProgram.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\frmLoyaltyProgram.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\frmProgramLoad.Designer.vb">
       <DependentUpon>frmProgramLoad.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmProgramLoad.vb">
+    <Compile Include="Tools\frmProgramLoad.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.vb">
@@ -126,16 +132,16 @@
       <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProgressBar.Designer.vb">
+    <Compile Include="Tools\frmProgressBar.Designer.vb">
       <DependentUpon>frmProgressBar.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmProgressBar.vb">
+    <Compile Include="Tools\frmProgressBar.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmServerConfig.Designer.vb">
+    <Compile Include="Tools\frmServerConfig.Designer.vb">
       <DependentUpon>frmServerConfig.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmServerConfig.vb">
+    <Compile Include="Tools\frmServerConfig.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -155,19 +161,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Excel Room Loader.resx">
+    <EmbeddedResource Include="Tools\Excel Room Loader.resx">
       <DependentUpon>Excel Room Loader.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProgramLoad.resx">
+    <EmbeddedResource Include="Tools\frmLoyaltyProgram.resx">
+      <DependentUpon>frmLoyaltyProgram.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\frmProgramLoad.resx">
       <DependentUpon>frmProgramLoad.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProgressBar.resx">
+    <EmbeddedResource Include="Tools\frmProgressBar.resx">
       <DependentUpon>frmProgressBar.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmServerConfig.resx">
+    <EmbeddedResource Include="Tools\frmServerConfig.resx">
       <DependentUpon>frmServerConfig.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">

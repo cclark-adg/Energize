@@ -279,7 +279,7 @@ Public Class Energize
             ls.Checked = False
             i += 1
         Next
-        If needUpdate Then
+        If needUpdate And CONNECTED Then
             Try
                 For Each s As String In cmds
                     sqlCmd.CommandText = s
@@ -411,4 +411,6 @@ Public Class Energize
         frmServerConfig.loadForm(SERVER_ADDRESS, USERNAME, PASSWORD)
 
     End Sub
+
+   
 End Class

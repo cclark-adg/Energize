@@ -114,7 +114,7 @@ Public Class frmExcel_Room_Loader
                     Try
                         Dim itms As New List(Of Integer())
                         'Find each device type and local id based upon the room type and add it to a list 
-                        sqlCmd.CommandText = "Select id,device_type_id,local_id_number from tbl_Rooms join tbl_local_ids on tbl_local_ids.room_type_id = tbl_rooms.Room_Type_ID  and Room_Name = 'Room " & ls.SubItems(1).Text & "';"
+                        sqlCmd.CommandText = "Select id,device_type_id,local_id_number from tbl_Rooms join tbl_local_ids on tbl_local_ids.room_type_id = tbl_rooms.Room_Type_ID  and Room_Name = '" & ls.SubItems(1).Text & "';"
                         sqlReader = sqlCmd.ExecuteReader()
                         While sqlReader.Read()
                             itms.Add(New Integer() {sqlReader(0), sqlReader(1), sqlReader(2)})
@@ -137,4 +137,7 @@ Public Class frmExcel_Room_Loader
 #End Region
 
 
+    Private Sub frmExcel_Room_Loader_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

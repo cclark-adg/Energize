@@ -10,6 +10,7 @@ Public Class frmMain
 
 #Region "Crestron"
 
+    Private crestron As New VptSession3()
     Private transactionIDs As New List(Of Long)
     Private errorNumber As Integer = 0
     Private successNumber As Integer = 0
@@ -62,6 +63,10 @@ Public Class frmMain
 #Region "Event Editor Variables"
     Private EE_eventList As New List(Of String())
     Private EE_currentEvent As String() = {"", "", "", "", ""}
+#End Region
+
+#Region "State Manager Variables"
+    Private SM_deviceTypeList As New List(Of String())
 #End Region
 
 #End Region
@@ -119,6 +124,7 @@ Public Class frmMain
         End If
 
     End Sub
+
     Private Sub closeConnections()
         If sessions.Count <> 0 Then
             For i = 0 To sessions.Count - 1 Step 1
@@ -128,7 +134,7 @@ Public Class frmMain
 
             Next
         End If
-        
+
     End Sub
    
 
@@ -459,20 +465,25 @@ Public Class frmMain
         AE_warningEventsCodes.Clear()
         AE_combWarningAlarms.Items.Clear()
         sqlCmd.CommandText = "Select id,description from tbl_events"
-        Try
-            sqlReader = sqlCmd.ExecuteReader()
-            While sqlReader.Read()
-                AE_warningEventsCodes.Add(sqlReader(0).ToString)
-                AE_combWarningAlarms.Items.Add(sqlReader(1).ToString)
-            End While
+        If SQLCONNECTED Then
+            Try
+                sqlReader = sqlCmd.ExecuteReader()
+                While sqlReader.Read()
+                    AE_warningEventsCodes.Add(sqlReader(0).ToString)
+                    AE_combWarningAlarms.Items.Add(sqlReader(1).ToString)
+                End While
 
-        Catch ex As SqlException
-            MessageBox.Show("SQL exception: " + ex.ToString)
-        Catch ex As Exception
-            MessageBox.Show("Error: " + ex.ToString)
-        Finally
-            sqlReader.Close()
-        End Try
+            Catch ex As SqlException
+                MessageBox.Show("SQL exception: " + ex.ToString)
+            Catch ex As Exception
+                MessageBox.Show("Error: " + ex.ToString)
+            Finally
+                sqlReader.Close()
+            End Try
+        Else
+            tssLbl_Status.Text = "Not Connected to Database. Please check Connection settings and/or make sure SQL Server is running."
+        End If
+        
     End Sub
     Private Sub AE_clearWarning(ByVal index As Integer)
         AE_tbWarningTimeFrame.Text = ""
@@ -1255,6 +1266,36 @@ Public Class frmMain
     End Sub
 #End Region
 
+#Region "State Manager"
+    'Update all the fields in the State Manager ie The states list, the device types list etc..
+    Private Sub updateStateManager()
+        'Clear all the existing items in the check box
+        SM_cbDevices.Items.Clear()
+        'Add all the devices to the Devices check box
+        For Each item In AE_lbDevices.Items
+            SM_cbDevices.Items.Add(item)
+        Next
+        'Set the State manager list of devices to the alarm editor list of devices
+        SM_deviceTypeList = AE_deviceTypeList
+    End Sub
+    Private Sub SM_cbDevices_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles SM_cbDevices.SelectedIndexChanged
+        'Every time a device is selected check to see if its a Analog or binary device then show the appropriate  controls for said signal type
+        If SM_deviceTypeList.Item(SM_cbDevices.SelectedIndex)(4) = "Analog" Then
+            SM_rbDigitalOff.Visible = False
+            SM_rbDigitalOn.Visible = False
+            SM_tbAnalogValue.Visible = True
+            SM_lblAnalogHundred.Visible = True
+            SM_lblAnalogZero.Visible = True
+        ElseIf SM_deviceTypeList.Item(SM_cbDevices.SelectedIndex)(4) = "Binary" Then
+            SM_rbDigitalOff.Visible = True
+            SM_rbDigitalOn.Visible = True
+            SM_tbAnalogValue.Visible = False
+            SM_lblAnalogHundred.Visible = False
+            SM_lblAnalogZero.Visible = False
+        End If
+    End Sub
+#End Region
+
 #End Region
 
 #Region "Tools"
@@ -1284,11 +1325,12 @@ Public Class frmMain
                 Case 1
                     updateRoomTypes()
                 Case 2
-                Case 3
                     updateRoomList()
                     updateTVRoomListByFloor()
-                Case 4
+                Case 3
                     updateEventList()
+                Case 4
+                    updateStateManager()
             End Select
         End If
 
@@ -1354,12 +1396,11 @@ Public Class frmMain
     
     
 
-   
-    Private Sub TableLayoutPanel4_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles TableLayoutPanel4.Paint
+    Private Sub GroupBox4_Enter(sender As System.Object, e As System.EventArgs) Handles GroupBox4.Enter
 
     End Sub
 
-    Private Sub Button2_Click(sender As System.Object, e As System.EventArgs) Handles SM_btnNew.Click
+    Private Sub Panel1_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs)
 
     End Sub
 End Class
