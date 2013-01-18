@@ -1281,18 +1281,45 @@ Public Class frmMain
     Private Sub SM_cbDevices_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles SM_cbDevices.SelectedIndexChanged
         'Every time a device is selected check to see if its a Analog or binary device then show the appropriate  controls for said signal type
         If SM_deviceTypeList.Item(SM_cbDevices.SelectedIndex)(4) = "Analog" Then
-            SM_rbDigitalOff.Visible = False
-            SM_rbDigitalOn.Visible = False
-            SM_tbAnalogValue.Visible = True
-            SM_lblAnalogHundred.Visible = True
-            SM_lblAnalogZero.Visible = True
+            SM_gbLights.Visible = False
+            SM_gbTVControls.Visible = False
+            If SM_deviceTypeList.Item(SM_cbDevices.SelectedIndex)(1) = "SHADES" Then
+                SM_tcShades.Visible = True
+                SM_gbTstatControls.Visible = False
+            Else
+                SM_tcShades.Visible = False
+                SM_gbTstatControls.Visible = True
+            End If
+
         ElseIf SM_deviceTypeList.Item(SM_cbDevices.SelectedIndex)(4) = "Binary" Then
-            SM_rbDigitalOff.Visible = True
-            SM_rbDigitalOn.Visible = True
-            SM_tbAnalogValue.Visible = False
-            SM_lblAnalogHundred.Visible = False
-            SM_lblAnalogZero.Visible = False
+            SM_tcShades.Visible = False
+            SM_gbTstatControls.Visible = False
+            If SM_deviceTypeList.Item(SM_cbDevices.SelectedIndex)(1) = "TV" Then
+                SM_gbTVControls.Visible = True
+                SM_gbLights.Visible = False
+            Else
+                SM_gbLights.Visible = True
+                SM_gbTVControls.Visible = False
+            End If
+
         End If
+    End Sub
+    'When the thermostat slider is changed update the up down box and visa versa
+    Private Sub SM_tbTstatSlider_Scroll(sender As System.Object, e As System.EventArgs) Handles SM_tbTstatSlider.Scroll
+        SM_nudSetPoint.Value = SM_tbTstatSlider.Value
+    End Sub
+    Private Sub SM_nudSetPoint_ValueChanged(sender As System.Object, e As System.EventArgs) Handles SM_nudSetPoint.ValueChanged
+        SM_tbTstatSlider.Value = SM_nudSetPoint.Value
+    End Sub
+
+    'Create a new State and add it to the database
+    Private Sub SM_btnNew_Click(sender As System.Object, e As System.EventArgs) Handles SM_btnNew.Click
+        SM_lbStates.Items.Add(InputBox("Enter the name of the new state."))
+    End Sub
+
+    'Update the controls based upon the selected state
+    Private Sub SM_lbStates_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles SM_lbStates.SelectedIndexChanged
+        SM_tbStateName.Text = SM_lbStates.Items.Item(SM_lbStates.SelectedIndex)
     End Sub
 #End Region
 
@@ -1310,6 +1337,20 @@ Public Class frmMain
     Private Sub SQLServerConfigurationToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SQLServerConfigurationToolStripMenuItem.Click
         frmServerConfig.Show()
         frmServerConfig.loadForm(SERVER_ADDRESS, USERNAME, PASSWORD)
+    End Sub
+
+    'Open the Loyalty Program Form
+    Private Sub LoyaltyProgramToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles LoyaltyProgramToolStripMenuItem.Click
+        frmLoyaltyProgram.SM_devicetypelist = Me.SM_deviceTypeList
+        frmLoyaltyProgram.Show()
+        frmLoyaltyProgram.BringToFront()
+
+        frmLoyaltyProgram.SM_cbDevices.Items.Clear()
+        'Add all the devices to the Devices check box
+        For Each item In AE_lbDevices.Items
+            frmLoyaltyProgram.SM_cbDevices.Items.Add(item)
+        Next
+
     End Sub
 #End Region
 
@@ -1403,4 +1444,10 @@ Public Class frmMain
     Private Sub Panel1_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs)
 
     End Sub
+
+    
+    
+    
+    
+    
 End Class

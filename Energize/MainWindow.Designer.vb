@@ -22,6 +22,7 @@ Partial Class Energize
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Energize))
         Me.lvAlarms = New System.Windows.Forms.ListView()
         Me.Time_Date = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -29,11 +30,11 @@ Partial Class Energize
         Me.Description = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Alarm_Code = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Priority = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.cmsLvAlarms = New System.Windows.Forms.ContextMenuStrip()
+        Me.cmsLvAlarms = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.tsmiLvAlarmAcknowledge = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnAcknowledge = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.cmsKPI = New System.Windows.Forms.ContextMenuStrip()
+        Me.cmsKPI = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.AddKPIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemoveKPIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -72,7 +73,7 @@ Partial Class Energize
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
-        Me.tmrAlarm = New System.Windows.Forms.Timer()
+        Me.tmrAlarm = New System.Windows.Forms.Timer(Me.components)
         Me.btnReports = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
@@ -82,8 +83,8 @@ Partial Class Energize
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SQLServerConfigurationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.NotifyIconEnergize = New System.Windows.Forms.NotifyIcon()
-        Me.cmsNotifyIcon = New System.Windows.Forms.ContextMenuStrip()
+        Me.NotifyIconEnergize = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.cmsNotifyIcon = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.AlarmsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.AcknowledgedAlarmsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -616,7 +617,7 @@ Partial Class Energize
         '
         'ToolStripContainer1.ContentPanel
         '
-        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(1061, 1)
+        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(1061, 0)
         Me.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolStripContainer1.Location = New System.Drawing.Point(3, 3)
         Me.ToolStripContainer1.Name = "ToolStripContainer1"

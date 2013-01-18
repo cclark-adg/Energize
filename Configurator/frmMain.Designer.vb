@@ -41,6 +41,7 @@ Partial Class frmMain
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DatabaseSetupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SQLServerConfigurationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoyaltyProgramToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.tssLbl_Status = New System.Windows.Forms.ToolStripStatusLabel()
         Me.RE_tmrProgramLoad = New System.Windows.Forms.Timer(Me.components)
@@ -50,23 +51,51 @@ Partial Class frmMain
         Me.SM_tbStateName = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.SM_tbAnalogValue = New System.Windows.Forms.TrackBar()
-        Me.SM_rbDigitalOff = New System.Windows.Forms.RadioButton()
+        Me.SM_gbTstatControls = New System.Windows.Forms.GroupBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.SM_tbTstatSlider = New System.Windows.Forms.TrackBar()
+        Me.SM_nudSetPoint = New System.Windows.Forms.NumericUpDown()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.SM_gbTVControls = New System.Windows.Forms.GroupBox()
+        Me.SM_rbTvOff = New System.Windows.Forms.RadioButton()
+        Me.SM_rbTvOn = New System.Windows.Forms.RadioButton()
+        Me.SM_gbLights = New System.Windows.Forms.GroupBox()
         Me.SM_rbDigitalOn = New System.Windows.Forms.RadioButton()
+        Me.SM_rbDigitalOff = New System.Windows.Forms.RadioButton()
+        Me.SM_cbAreas = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.SM_tcShades = New System.Windows.Forms.TabControl()
+        Me.SM_tpSetting1 = New System.Windows.Forms.TabPage()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.SM_rbShadeOpen = New System.Windows.Forms.RadioButton()
+        Me.SM_rbShadeClosed = New System.Windows.Forms.RadioButton()
+        Me.SM_tpSetting2 = New System.Windows.Forms.TabPage()
+        Me.SM_tbAnalogValue = New System.Windows.Forms.TrackBar()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.SM_lblAnalogZero = New System.Windows.Forms.Label()
+        Me.SM_lblAnalogHundred = New System.Windows.Forms.Label()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.SM_rbSunTrackOn = New System.Windows.Forms.RadioButton()
+        Me.SM_rbSunTrackOff = New System.Windows.Forms.RadioButton()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.SM_cbDevices = New System.Windows.Forms.ComboBox()
-        Me.ListView1 = New System.Windows.Forms.ListView()
         Me.SM_btnNew = New System.Windows.Forms.Button()
         Me.SM_btnDelete = New System.Windows.Forms.Button()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.SM_cbLoyaltyProgram = New System.Windows.Forms.CheckBox()
+        Me.SM_gbSchedule = New System.Windows.Forms.GroupBox()
         Me.SM_lblMinutesStop = New System.Windows.Forms.Label()
-        Me.SM_lblMinutesStart = New System.Windows.Forms.Label()
-        Me.SM_lblHoursStop = New System.Windows.Forms.Label()
-        Me.SM_lblHoursStart = New System.Windows.Forms.Label()
         Me.SM_rbPMStop = New System.Windows.Forms.RadioButton()
-        Me.SM_rbAMStop = New System.Windows.Forms.RadioButton()
+        Me.SM_lblMinutesStart = New System.Windows.Forms.Label()
         Me.SM_rbPMStart = New System.Windows.Forms.RadioButton()
+        Me.SM_lblHoursStop = New System.Windows.Forms.Label()
+        Me.SM_lblStop = New System.Windows.Forms.Label()
+        Me.SM_lblHoursStart = New System.Windows.Forms.Label()
+        Me.SM_lblStart = New System.Windows.Forms.Label()
+        Me.SM_rbAMStop = New System.Windows.Forms.RadioButton()
         Me.SM_rbAMStart = New System.Windows.Forms.RadioButton()
         Me.SM_udMinutesStop = New System.Windows.Forms.NumericUpDown()
         Me.SM_udHoursStop = New System.Windows.Forms.NumericUpDown()
@@ -74,9 +103,8 @@ Partial Class frmMain
         Me.SM_udHoursStart = New System.Windows.Forms.NumericUpDown()
         Me.SM_dtpStop = New System.Windows.Forms.DateTimePicker()
         Me.SM_dtpStart = New System.Windows.Forms.DateTimePicker()
-        Me.SM_lblStop = New System.Windows.Forms.Label()
-        Me.SM_lblStart = New System.Windows.Forms.Label()
         Me.SM_cbTriggers = New System.Windows.Forms.ComboBox()
+        Me.SM_lbStates = New System.Windows.Forms.ListBox()
         Me.tpEventEditor = New System.Windows.Forms.TabPage()
         Me.tlpEventEditor = New System.Windows.Forms.TableLayoutPanel()
         Me.EE_lblEvents = New System.Windows.Forms.Label()
@@ -145,6 +173,12 @@ Partial Class frmMain
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.AE_lbDevices = New System.Windows.Forms.ListBox()
         Me.AE_lblDevices = New System.Windows.Forms.Label()
+        Me.AE_btnNew = New System.Windows.Forms.Button()
+        Me.AE_btnDel = New System.Windows.Forms.Button()
+        Me.AE_btnClear = New System.Windows.Forms.Button()
+        Me.AE_btnSave = New System.Windows.Forms.Button()
+        Me.AE_lblName = New System.Windows.Forms.Label()
+        Me.AE_lbDeviceName = New System.Windows.Forms.Label()
         Me.gbAlarmSettings = New System.Windows.Forms.GroupBox()
         Me.AE_combWarningAlarms = New System.Windows.Forms.ComboBox()
         Me.AE_lblWarningCode = New System.Windows.Forms.Label()
@@ -165,31 +199,7 @@ Partial Class frmMain
         Me.AE_rbBasic = New System.Windows.Forms.RadioButton()
         Me.AE_tbTimeFrame = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.AE_btnNew = New System.Windows.Forms.Button()
-        Me.AE_btnDel = New System.Windows.Forms.Button()
-        Me.AE_btnClear = New System.Windows.Forms.Button()
-        Me.AE_btnSave = New System.Windows.Forms.Button()
-        Me.AE_lblName = New System.Windows.Forms.Label()
-        Me.AE_lbDeviceName = New System.Windows.Forms.Label()
         Me.tpvConfigurator = New System.Windows.Forms.TabControl()
-        Me.SM_lblAnalogZero = New System.Windows.Forms.Label()
-        Me.SM_lblAnalogHundred = New System.Windows.Forms.Label()
-        Me.SM_cbAreas = New System.Windows.Forms.ComboBox()
-        Me.SM_gbSchedule = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.SM_rbShadeClosed = New System.Windows.Forms.RadioButton()
-        Me.SM_rbSunTrackOff = New System.Windows.Forms.RadioButton()
-        Me.SM_rbSunTrackOn = New System.Windows.Forms.RadioButton()
-        Me.SM_rbShadeOpen = New System.Windows.Forms.RadioButton()
-        Me.SM_tcShades = New System.Windows.Forms.TabControl()
-        Me.SM_tpSetting1 = New System.Windows.Forms.TabPage()
-        Me.SM_tpSetting2 = New System.Windows.Forms.TabPage()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.LoyaltyProgramToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.SM_cbLoyaltyProgram = New System.Windows.Forms.CheckBox()
         Me.tvMenuStrip.SuspendLayout()
         Me.RE_cmsTV.SuspendLayout()
         Me.mainStrip.SuspendLayout()
@@ -198,8 +208,19 @@ Partial Class frmMain
         Me.TableLayoutPanel4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
+        Me.SM_gbTstatControls.SuspendLayout()
+        CType(Me.SM_tbTstatSlider, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SM_nudSetPoint, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SM_gbTVControls.SuspendLayout()
+        Me.SM_gbLights.SuspendLayout()
+        Me.SM_tcShades.SuspendLayout()
+        Me.SM_tpSetting1.SuspendLayout()
+        Me.SM_tpSetting2.SuspendLayout()
         CType(Me.SM_tbAnalogValue, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage1.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
+        Me.GroupBox7.SuspendLayout()
+        Me.SM_gbSchedule.SuspendLayout()
         CType(Me.SM_udMinutesStop, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SM_udHoursStop, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SM_udMinutesStart, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -222,12 +243,6 @@ Partial Class frmMain
         Me.AE_gbSignalType.SuspendLayout()
         Me.AE_gbAlarmType.SuspendLayout()
         Me.tpvConfigurator.SuspendLayout()
-        Me.SM_gbSchedule.SuspendLayout()
-        Me.SM_tcShades.SuspendLayout()
-        Me.SM_tpSetting1.SuspendLayout()
-        Me.SM_tpSetting2.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        Me.GroupBox7.SuspendLayout()
         Me.SuspendLayout()
         '
         'tvMenuStrip
@@ -333,6 +348,12 @@ Partial Class frmMain
         Me.SQLServerConfigurationToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
         Me.SQLServerConfigurationToolStripMenuItem.Text = "SQL Server Settings"
         '
+        'LoyaltyProgramToolStripMenuItem
+        '
+        Me.LoyaltyProgramToolStripMenuItem.Name = "LoyaltyProgramToolStripMenuItem"
+        Me.LoyaltyProgramToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
+        Me.LoyaltyProgramToolStripMenuItem.Text = "Loyalty Program"
+        '
         'StatusStrip
         '
         Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tssLbl_Status})
@@ -372,10 +393,10 @@ Partial Class frmMain
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel4.Controls.Add(Me.GroupBox5, 2, 1)
         Me.TableLayoutPanel4.Controls.Add(Me.GroupBox4, 3, 1)
-        Me.TableLayoutPanel4.Controls.Add(Me.ListView1, 0, 1)
         Me.TableLayoutPanel4.Controls.Add(Me.SM_btnNew, 0, 3)
         Me.TableLayoutPanel4.Controls.Add(Me.SM_btnDelete, 1, 3)
         Me.TableLayoutPanel4.Controls.Add(Me.GroupBox6, 2, 2)
+        Me.TableLayoutPanel4.Controls.Add(Me.SM_lbStates, 0, 1)
         Me.TableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
@@ -417,28 +438,317 @@ Partial Class frmMain
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.SM_gbTstatControls)
+        Me.GroupBox4.Controls.Add(Me.SM_gbTVControls)
+        Me.GroupBox4.Controls.Add(Me.SM_gbLights)
         Me.GroupBox4.Controls.Add(Me.SM_tcShades)
-        Me.GroupBox4.Controls.Add(Me.SM_cbAreas)
-        Me.GroupBox4.Controls.Add(Me.Label8)
         Me.GroupBox4.Controls.Add(Me.Label7)
-        Me.GroupBox4.Controls.Add(Me.SM_rbDigitalOff)
-        Me.GroupBox4.Controls.Add(Me.SM_rbDigitalOn)
         Me.GroupBox4.Controls.Add(Me.SM_cbDevices)
-        Me.GroupBox4.Location = New System.Drawing.Point(528, 27)
+        Me.GroupBox4.Location = New System.Drawing.Point(527, 27)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(515, 223)
         Me.GroupBox4.TabIndex = 2
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Device Settings"
         '
+        'SM_gbTstatControls
+        '
+        Me.SM_gbTstatControls.Controls.Add(Me.Label11)
+        Me.SM_gbTstatControls.Controls.Add(Me.Label9)
+        Me.SM_gbTstatControls.Controls.Add(Me.SM_tbTstatSlider)
+        Me.SM_gbTstatControls.Controls.Add(Me.SM_nudSetPoint)
+        Me.SM_gbTstatControls.Controls.Add(Me.Label6)
+        Me.SM_gbTstatControls.Location = New System.Drawing.Point(275, 16)
+        Me.SM_gbTstatControls.Name = "SM_gbTstatControls"
+        Me.SM_gbTstatControls.Size = New System.Drawing.Size(159, 200)
+        Me.SM_gbTstatControls.TabIndex = 19
+        Me.SM_gbTstatControls.TabStop = False
+        Me.SM_gbTstatControls.Text = "Thermostat Controls"
+        Me.SM_gbTstatControls.Visible = False
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(71, 25)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(19, 13)
+        Me.Label11.TabIndex = 5
+        Me.Label11.Text = "90"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(71, 168)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(19, 13)
+        Me.Label9.TabIndex = 4
+        Me.Label9.Text = "60"
+        '
+        'SM_tbTstatSlider
+        '
+        Me.SM_tbTstatSlider.Location = New System.Drawing.Point(96, 22)
+        Me.SM_tbTstatSlider.Maximum = 90
+        Me.SM_tbTstatSlider.Minimum = 60
+        Me.SM_tbTstatSlider.Name = "SM_tbTstatSlider"
+        Me.SM_tbTstatSlider.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.SM_tbTstatSlider.Size = New System.Drawing.Size(45, 169)
+        Me.SM_tbTstatSlider.TabIndex = 3
+        Me.SM_tbTstatSlider.TickStyle = System.Windows.Forms.TickStyle.TopLeft
+        Me.SM_tbTstatSlider.Value = 60
+        '
+        'SM_nudSetPoint
+        '
+        Me.SM_nudSetPoint.Location = New System.Drawing.Point(13, 83)
+        Me.SM_nudSetPoint.Maximum = New Decimal(New Integer() {90, 0, 0, 0})
+        Me.SM_nudSetPoint.Minimum = New Decimal(New Integer() {60, 0, 0, 0})
+        Me.SM_nudSetPoint.Name = "SM_nudSetPoint"
+        Me.SM_nudSetPoint.Size = New System.Drawing.Size(43, 20)
+        Me.SM_nudSetPoint.TabIndex = 2
+        Me.SM_nudSetPoint.Value = New Decimal(New Integer() {60, 0, 0, 0})
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(6, 62)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(53, 13)
+        Me.Label6.TabIndex = 1
+        Me.Label6.Text = "Set Point:"
+        '
+        'SM_gbTVControls
+        '
+        Me.SM_gbTVControls.Controls.Add(Me.SM_rbTvOff)
+        Me.SM_gbTVControls.Controls.Add(Me.SM_rbTvOn)
+        Me.SM_gbTVControls.Location = New System.Drawing.Point(275, 16)
+        Me.SM_gbTVControls.Name = "SM_gbTVControls"
+        Me.SM_gbTVControls.Size = New System.Drawing.Size(169, 201)
+        Me.SM_gbTVControls.TabIndex = 18
+        Me.SM_gbTVControls.TabStop = False
+        Me.SM_gbTVControls.Text = "Television Controls"
+        Me.SM_gbTVControls.Visible = False
+        '
+        'SM_rbTvOff
+        '
+        Me.SM_rbTvOff.AutoSize = True
+        Me.SM_rbTvOff.Location = New System.Drawing.Point(36, 114)
+        Me.SM_rbTvOff.Name = "SM_rbTvOff"
+        Me.SM_rbTvOff.Size = New System.Drawing.Size(55, 17)
+        Me.SM_rbTvOff.TabIndex = 1
+        Me.SM_rbTvOff.TabStop = True
+        Me.SM_rbTvOff.Text = "Tv Off"
+        Me.SM_rbTvOff.UseVisualStyleBackColor = True
+        '
+        'SM_rbTvOn
+        '
+        Me.SM_rbTvOn.AutoSize = True
+        Me.SM_rbTvOn.Location = New System.Drawing.Point(36, 68)
+        Me.SM_rbTvOn.Name = "SM_rbTvOn"
+        Me.SM_rbTvOn.Size = New System.Drawing.Size(55, 17)
+        Me.SM_rbTvOn.TabIndex = 0
+        Me.SM_rbTvOn.TabStop = True
+        Me.SM_rbTvOn.Text = "Tv On"
+        Me.SM_rbTvOn.UseVisualStyleBackColor = True
+        '
+        'SM_gbLights
+        '
+        Me.SM_gbLights.Controls.Add(Me.SM_rbDigitalOn)
+        Me.SM_gbLights.Controls.Add(Me.SM_rbDigitalOff)
+        Me.SM_gbLights.Controls.Add(Me.SM_cbAreas)
+        Me.SM_gbLights.Controls.Add(Me.Label8)
+        Me.SM_gbLights.Location = New System.Drawing.Point(279, 16)
+        Me.SM_gbLights.Name = "SM_gbLights"
+        Me.SM_gbLights.Size = New System.Drawing.Size(168, 200)
+        Me.SM_gbLights.TabIndex = 17
+        Me.SM_gbLights.TabStop = False
+        Me.SM_gbLights.Text = "Lighting Controls"
+        '
+        'SM_rbDigitalOn
+        '
+        Me.SM_rbDigitalOn.AutoSize = True
+        Me.SM_rbDigitalOn.Location = New System.Drawing.Point(63, 91)
+        Me.SM_rbDigitalOn.Name = "SM_rbDigitalOn"
+        Me.SM_rbDigitalOn.Size = New System.Drawing.Size(39, 17)
+        Me.SM_rbDigitalOn.TabIndex = 2
+        Me.SM_rbDigitalOn.TabStop = True
+        Me.SM_rbDigitalOn.Text = "On"
+        Me.SM_rbDigitalOn.UseVisualStyleBackColor = True
+        '
+        'SM_rbDigitalOff
+        '
+        Me.SM_rbDigitalOff.AutoSize = True
+        Me.SM_rbDigitalOff.Location = New System.Drawing.Point(63, 132)
+        Me.SM_rbDigitalOff.Name = "SM_rbDigitalOff"
+        Me.SM_rbDigitalOff.Size = New System.Drawing.Size(39, 17)
+        Me.SM_rbDigitalOff.TabIndex = 3
+        Me.SM_rbDigitalOff.TabStop = True
+        Me.SM_rbDigitalOff.Text = "Off"
+        Me.SM_rbDigitalOff.UseVisualStyleBackColor = True
+        '
+        'SM_cbAreas
+        '
+        Me.SM_cbAreas.FormattingEnabled = True
+        Me.SM_cbAreas.Items.AddRange(New Object() {"Entry", "Desk", "Lamps", "Bath", "Nightlight"})
+        Me.SM_cbAreas.Location = New System.Drawing.Point(13, 38)
+        Me.SM_cbAreas.Name = "SM_cbAreas"
+        Me.SM_cbAreas.Size = New System.Drawing.Size(123, 21)
+        Me.SM_cbAreas.TabIndex = 9
+        '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(14, 84)
+        Me.Label8.Location = New System.Drawing.Point(10, 22)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(63, 13)
         Me.Label8.TabIndex = 6
         Me.Label8.Text = "Area/Loads"
+        '
+        'SM_tcShades
+        '
+        Me.SM_tcShades.Controls.Add(Me.SM_tpSetting1)
+        Me.SM_tcShades.Controls.Add(Me.SM_tpSetting2)
+        Me.SM_tcShades.Controls.Add(Me.TabPage1)
+        Me.SM_tcShades.Location = New System.Drawing.Point(279, 16)
+        Me.SM_tcShades.Name = "SM_tcShades"
+        Me.SM_tcShades.SelectedIndex = 0
+        Me.SM_tcShades.Size = New System.Drawing.Size(169, 201)
+        Me.SM_tcShades.TabIndex = 16
+        '
+        'SM_tpSetting1
+        '
+        Me.SM_tpSetting1.BackColor = System.Drawing.SystemColors.Control
+        Me.SM_tpSetting1.Controls.Add(Me.Label4)
+        Me.SM_tpSetting1.Controls.Add(Me.SM_rbShadeOpen)
+        Me.SM_tpSetting1.Controls.Add(Me.SM_rbShadeClosed)
+        Me.SM_tpSetting1.Location = New System.Drawing.Point(4, 22)
+        Me.SM_tpSetting1.Name = "SM_tpSetting1"
+        Me.SM_tpSetting1.Padding = New System.Windows.Forms.Padding(3)
+        Me.SM_tpSetting1.Size = New System.Drawing.Size(161, 175)
+        Me.SM_tpSetting1.TabIndex = 0
+        Me.SM_tpSetting1.Text = "Setting 1"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(29, 15)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(109, 13)
+        Me.Label4.TabIndex = 13
+        Me.Label4.Text = "Shades Open/Closed"
+        '
+        'SM_rbShadeOpen
+        '
+        Me.SM_rbShadeOpen.AutoSize = True
+        Me.SM_rbShadeOpen.Location = New System.Drawing.Point(59, 46)
+        Me.SM_rbShadeOpen.Name = "SM_rbShadeOpen"
+        Me.SM_rbShadeOpen.Size = New System.Drawing.Size(51, 17)
+        Me.SM_rbShadeOpen.TabIndex = 12
+        Me.SM_rbShadeOpen.TabStop = True
+        Me.SM_rbShadeOpen.Text = "Open"
+        Me.SM_rbShadeOpen.UseVisualStyleBackColor = True
+        '
+        'SM_rbShadeClosed
+        '
+        Me.SM_rbShadeClosed.AutoSize = True
+        Me.SM_rbShadeClosed.Location = New System.Drawing.Point(59, 87)
+        Me.SM_rbShadeClosed.Name = "SM_rbShadeClosed"
+        Me.SM_rbShadeClosed.Size = New System.Drawing.Size(57, 17)
+        Me.SM_rbShadeClosed.TabIndex = 11
+        Me.SM_rbShadeClosed.TabStop = True
+        Me.SM_rbShadeClosed.Text = "Closed"
+        Me.SM_rbShadeClosed.UseVisualStyleBackColor = True
+        '
+        'SM_tpSetting2
+        '
+        Me.SM_tpSetting2.BackColor = System.Drawing.SystemColors.Control
+        Me.SM_tpSetting2.Controls.Add(Me.SM_tbAnalogValue)
+        Me.SM_tpSetting2.Controls.Add(Me.Label2)
+        Me.SM_tpSetting2.Controls.Add(Me.SM_lblAnalogZero)
+        Me.SM_tpSetting2.Controls.Add(Me.SM_lblAnalogHundred)
+        Me.SM_tpSetting2.Location = New System.Drawing.Point(4, 22)
+        Me.SM_tpSetting2.Name = "SM_tpSetting2"
+        Me.SM_tpSetting2.Padding = New System.Windows.Forms.Padding(3)
+        Me.SM_tpSetting2.Size = New System.Drawing.Size(161, 175)
+        Me.SM_tpSetting2.TabIndex = 1
+        Me.SM_tpSetting2.Text = "Setting 2"
+        '
+        'SM_tbAnalogValue
+        '
+        Me.SM_tbAnalogValue.Location = New System.Drawing.Point(88, 5)
+        Me.SM_tbAnalogValue.Name = "SM_tbAnalogValue"
+        Me.SM_tbAnalogValue.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.SM_tbAnalogValue.Size = New System.Drawing.Size(45, 164)
+        Me.SM_tbAnalogValue.TabIndex = 4
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(6, 65)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(78, 13)
+        Me.Label2.TabIndex = 10
+        Me.Label2.Text = "Shade Percent"
+        '
+        'SM_lblAnalogZero
+        '
+        Me.SM_lblAnalogZero.AutoSize = True
+        Me.SM_lblAnalogZero.Location = New System.Drawing.Point(134, 147)
+        Me.SM_lblAnalogZero.Name = "SM_lblAnalogZero"
+        Me.SM_lblAnalogZero.Size = New System.Drawing.Size(21, 13)
+        Me.SM_lblAnalogZero.TabIndex = 7
+        Me.SM_lblAnalogZero.Text = "0%"
+        '
+        'SM_lblAnalogHundred
+        '
+        Me.SM_lblAnalogHundred.AutoSize = True
+        Me.SM_lblAnalogHundred.Location = New System.Drawing.Point(125, 12)
+        Me.SM_lblAnalogHundred.Name = "SM_lblAnalogHundred"
+        Me.SM_lblAnalogHundred.Size = New System.Drawing.Size(33, 13)
+        Me.SM_lblAnalogHundred.TabIndex = 8
+        Me.SM_lblAnalogHundred.Text = "100%"
+        '
+        'TabPage1
+        '
+        Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage1.Controls.Add(Me.Label3)
+        Me.TabPage1.Controls.Add(Me.SM_rbSunTrackOn)
+        Me.TabPage1.Controls.Add(Me.SM_rbSunTrackOff)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(161, 175)
+        Me.TabPage1.TabIndex = 2
+        Me.TabPage1.Text = "Setting 3"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(39, 20)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(71, 13)
+        Me.Label3.TabIndex = 15
+        Me.Label3.Text = "Sun Tracking"
+        '
+        'SM_rbSunTrackOn
+        '
+        Me.SM_rbSunTrackOn.AutoSize = True
+        Me.SM_rbSunTrackOn.Location = New System.Drawing.Point(62, 62)
+        Me.SM_rbSunTrackOn.Name = "SM_rbSunTrackOn"
+        Me.SM_rbSunTrackOn.Size = New System.Drawing.Size(39, 17)
+        Me.SM_rbSunTrackOn.TabIndex = 13
+        Me.SM_rbSunTrackOn.TabStop = True
+        Me.SM_rbSunTrackOn.Text = "On"
+        Me.SM_rbSunTrackOn.UseVisualStyleBackColor = True
+        '
+        'SM_rbSunTrackOff
+        '
+        Me.SM_rbSunTrackOff.AutoSize = True
+        Me.SM_rbSunTrackOff.Location = New System.Drawing.Point(62, 104)
+        Me.SM_rbSunTrackOff.Name = "SM_rbSunTrackOff"
+        Me.SM_rbSunTrackOff.Size = New System.Drawing.Size(39, 17)
+        Me.SM_rbSunTrackOff.TabIndex = 14
+        Me.SM_rbSunTrackOff.TabStop = True
+        Me.SM_rbSunTrackOff.Text = "Off"
+        Me.SM_rbSunTrackOff.UseVisualStyleBackColor = True
         '
         'Label7
         '
@@ -449,36 +759,6 @@ Partial Class frmMain
         Me.Label7.TabIndex = 5
         Me.Label7.Text = "Type of Device"
         '
-        'SM_tbAnalogValue
-        '
-        Me.SM_tbAnalogValue.Location = New System.Drawing.Point(88, 5)
-        Me.SM_tbAnalogValue.Name = "SM_tbAnalogValue"
-        Me.SM_tbAnalogValue.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.SM_tbAnalogValue.Size = New System.Drawing.Size(45, 164)
-        Me.SM_tbAnalogValue.TabIndex = 4
-        '
-        'SM_rbDigitalOff
-        '
-        Me.SM_rbDigitalOff.AutoSize = True
-        Me.SM_rbDigitalOff.Location = New System.Drawing.Point(38, 162)
-        Me.SM_rbDigitalOff.Name = "SM_rbDigitalOff"
-        Me.SM_rbDigitalOff.Size = New System.Drawing.Size(39, 17)
-        Me.SM_rbDigitalOff.TabIndex = 3
-        Me.SM_rbDigitalOff.TabStop = True
-        Me.SM_rbDigitalOff.Text = "Off"
-        Me.SM_rbDigitalOff.UseVisualStyleBackColor = True
-        '
-        'SM_rbDigitalOn
-        '
-        Me.SM_rbDigitalOn.AutoSize = True
-        Me.SM_rbDigitalOn.Location = New System.Drawing.Point(38, 142)
-        Me.SM_rbDigitalOn.Name = "SM_rbDigitalOn"
-        Me.SM_rbDigitalOn.Size = New System.Drawing.Size(39, 17)
-        Me.SM_rbDigitalOn.TabIndex = 2
-        Me.SM_rbDigitalOn.TabStop = True
-        Me.SM_rbDigitalOn.Text = "On"
-        Me.SM_rbDigitalOn.UseVisualStyleBackColor = True
-        '
         'SM_cbDevices
         '
         Me.SM_cbDevices.FormattingEnabled = True
@@ -486,16 +766,6 @@ Partial Class frmMain
         Me.SM_cbDevices.Name = "SM_cbDevices"
         Me.SM_cbDevices.Size = New System.Drawing.Size(126, 21)
         Me.SM_cbDevices.TabIndex = 1
-        '
-        'ListView1
-        '
-        Me.TableLayoutPanel4.SetColumnSpan(Me.ListView1, 2)
-        Me.ListView1.Location = New System.Drawing.Point(3, 27)
-        Me.ListView1.Name = "ListView1"
-        Me.TableLayoutPanel4.SetRowSpan(Me.ListView1, 2)
-        Me.ListView1.Size = New System.Drawing.Size(146, 422)
-        Me.ListView1.TabIndex = 0
-        Me.ListView1.UseCompatibleStateImageBehavior = False
         '
         'SM_btnNew
         '
@@ -529,6 +799,51 @@ Partial Class frmMain
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Triggers"
         '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.SM_cbLoyaltyProgram)
+        Me.GroupBox7.Location = New System.Drawing.Point(185, 19)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(183, 60)
+        Me.GroupBox7.TabIndex = 25
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Settings"
+        '
+        'SM_cbLoyaltyProgram
+        '
+        Me.SM_cbLoyaltyProgram.AutoSize = True
+        Me.SM_cbLoyaltyProgram.Location = New System.Drawing.Point(20, 25)
+        Me.SM_cbLoyaltyProgram.Name = "SM_cbLoyaltyProgram"
+        Me.SM_cbLoyaltyProgram.Size = New System.Drawing.Size(123, 17)
+        Me.SM_cbLoyaltyProgram.TabIndex = 0
+        Me.SM_cbLoyaltyProgram.Text = "Use Loyalty Program"
+        Me.SM_cbLoyaltyProgram.UseVisualStyleBackColor = True
+        '
+        'SM_gbSchedule
+        '
+        Me.SM_gbSchedule.Controls.Add(Me.SM_lblMinutesStop)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_rbPMStop)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_lblMinutesStart)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_rbPMStart)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_lblHoursStop)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_lblStop)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_lblHoursStart)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_lblStart)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_rbAMStop)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_rbAMStart)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_udMinutesStop)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_udHoursStop)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_udMinutesStart)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_udHoursStart)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_dtpStop)
+        Me.SM_gbSchedule.Controls.Add(Me.SM_dtpStart)
+        Me.SM_gbSchedule.Location = New System.Drawing.Point(13, 96)
+        Me.SM_gbSchedule.Name = "SM_gbSchedule"
+        Me.SM_gbSchedule.Size = New System.Drawing.Size(585, 164)
+        Me.SM_gbSchedule.TabIndex = 24
+        Me.SM_gbSchedule.TabStop = False
+        Me.SM_gbSchedule.Text = "Scheduler"
+        '
         'SM_lblMinutesStop
         '
         Me.SM_lblMinutesStop.AutoSize = True
@@ -537,33 +852,6 @@ Partial Class frmMain
         Me.SM_lblMinutesStop.Size = New System.Drawing.Size(47, 13)
         Me.SM_lblMinutesStop.TabIndex = 23
         Me.SM_lblMinutesStop.Text = "Minutes:"
-        '
-        'SM_lblMinutesStart
-        '
-        Me.SM_lblMinutesStart.AutoSize = True
-        Me.SM_lblMinutesStart.Location = New System.Drawing.Point(374, 38)
-        Me.SM_lblMinutesStart.Name = "SM_lblMinutesStart"
-        Me.SM_lblMinutesStart.Size = New System.Drawing.Size(47, 13)
-        Me.SM_lblMinutesStart.TabIndex = 22
-        Me.SM_lblMinutesStart.Text = "Minutes:"
-        '
-        'SM_lblHoursStop
-        '
-        Me.SM_lblHoursStop.AutoSize = True
-        Me.SM_lblHoursStop.Location = New System.Drawing.Point(285, 88)
-        Me.SM_lblHoursStop.Name = "SM_lblHoursStop"
-        Me.SM_lblHoursStop.Size = New System.Drawing.Size(38, 13)
-        Me.SM_lblHoursStop.TabIndex = 21
-        Me.SM_lblHoursStop.Text = "Hours:"
-        '
-        'SM_lblHoursStart
-        '
-        Me.SM_lblHoursStart.AutoSize = True
-        Me.SM_lblHoursStart.Location = New System.Drawing.Point(285, 38)
-        Me.SM_lblHoursStart.Name = "SM_lblHoursStart"
-        Me.SM_lblHoursStart.Size = New System.Drawing.Size(38, 13)
-        Me.SM_lblHoursStart.TabIndex = 20
-        Me.SM_lblHoursStart.Text = "Hours:"
         '
         'SM_rbPMStop
         '
@@ -576,16 +864,14 @@ Partial Class frmMain
         Me.SM_rbPMStop.Text = "PM"
         Me.SM_rbPMStop.UseVisualStyleBackColor = True
         '
-        'SM_rbAMStop
+        'SM_lblMinutesStart
         '
-        Me.SM_rbAMStop.AutoSize = True
-        Me.SM_rbAMStop.Location = New System.Drawing.Point(486, 87)
-        Me.SM_rbAMStop.Name = "SM_rbAMStop"
-        Me.SM_rbAMStop.Size = New System.Drawing.Size(41, 17)
-        Me.SM_rbAMStop.TabIndex = 18
-        Me.SM_rbAMStop.TabStop = True
-        Me.SM_rbAMStop.Text = "AM"
-        Me.SM_rbAMStop.UseVisualStyleBackColor = True
+        Me.SM_lblMinutesStart.AutoSize = True
+        Me.SM_lblMinutesStart.Location = New System.Drawing.Point(374, 38)
+        Me.SM_lblMinutesStart.Name = "SM_lblMinutesStart"
+        Me.SM_lblMinutesStart.Size = New System.Drawing.Size(47, 13)
+        Me.SM_lblMinutesStart.TabIndex = 22
+        Me.SM_lblMinutesStart.Text = "Minutes:"
         '
         'SM_rbPMStart
         '
@@ -597,6 +883,53 @@ Partial Class frmMain
         Me.SM_rbPMStart.TabStop = True
         Me.SM_rbPMStart.Text = "PM"
         Me.SM_rbPMStart.UseVisualStyleBackColor = True
+        '
+        'SM_lblHoursStop
+        '
+        Me.SM_lblHoursStop.AutoSize = True
+        Me.SM_lblHoursStop.Location = New System.Drawing.Point(285, 88)
+        Me.SM_lblHoursStop.Name = "SM_lblHoursStop"
+        Me.SM_lblHoursStop.Size = New System.Drawing.Size(38, 13)
+        Me.SM_lblHoursStop.TabIndex = 21
+        Me.SM_lblHoursStop.Text = "Hours:"
+        '
+        'SM_lblStop
+        '
+        Me.SM_lblStop.AutoSize = True
+        Me.SM_lblStop.Location = New System.Drawing.Point(23, 87)
+        Me.SM_lblStop.Name = "SM_lblStop"
+        Me.SM_lblStop.Size = New System.Drawing.Size(29, 13)
+        Me.SM_lblStop.TabIndex = 8
+        Me.SM_lblStop.Text = "Stop"
+        '
+        'SM_lblHoursStart
+        '
+        Me.SM_lblHoursStart.AutoSize = True
+        Me.SM_lblHoursStart.Location = New System.Drawing.Point(285, 38)
+        Me.SM_lblHoursStart.Name = "SM_lblHoursStart"
+        Me.SM_lblHoursStart.Size = New System.Drawing.Size(38, 13)
+        Me.SM_lblHoursStart.TabIndex = 20
+        Me.SM_lblHoursStart.Text = "Hours:"
+        '
+        'SM_lblStart
+        '
+        Me.SM_lblStart.AutoSize = True
+        Me.SM_lblStart.Location = New System.Drawing.Point(23, 40)
+        Me.SM_lblStart.Name = "SM_lblStart"
+        Me.SM_lblStart.Size = New System.Drawing.Size(29, 13)
+        Me.SM_lblStart.TabIndex = 7
+        Me.SM_lblStart.Text = "Start"
+        '
+        'SM_rbAMStop
+        '
+        Me.SM_rbAMStop.AutoSize = True
+        Me.SM_rbAMStop.Location = New System.Drawing.Point(486, 87)
+        Me.SM_rbAMStop.Name = "SM_rbAMStop"
+        Me.SM_rbAMStop.Size = New System.Drawing.Size(41, 17)
+        Me.SM_rbAMStop.TabIndex = 18
+        Me.SM_rbAMStop.TabStop = True
+        Me.SM_rbAMStop.Text = "AM"
+        Me.SM_rbAMStop.UseVisualStyleBackColor = True
         '
         'SM_rbAMStart
         '
@@ -651,24 +984,6 @@ Partial Class frmMain
         Me.SM_dtpStart.Size = New System.Drawing.Size(200, 20)
         Me.SM_dtpStart.TabIndex = 10
         '
-        'SM_lblStop
-        '
-        Me.SM_lblStop.AutoSize = True
-        Me.SM_lblStop.Location = New System.Drawing.Point(23, 87)
-        Me.SM_lblStop.Name = "SM_lblStop"
-        Me.SM_lblStop.Size = New System.Drawing.Size(29, 13)
-        Me.SM_lblStop.TabIndex = 8
-        Me.SM_lblStop.Text = "Stop"
-        '
-        'SM_lblStart
-        '
-        Me.SM_lblStart.AutoSize = True
-        Me.SM_lblStart.Location = New System.Drawing.Point(23, 40)
-        Me.SM_lblStart.Name = "SM_lblStart"
-        Me.SM_lblStart.Size = New System.Drawing.Size(29, 13)
-        Me.SM_lblStart.TabIndex = 7
-        Me.SM_lblStart.Text = "Start"
-        '
         'SM_cbTriggers
         '
         Me.SM_cbTriggers.FormattingEnabled = True
@@ -678,13 +993,23 @@ Partial Class frmMain
         Me.SM_cbTriggers.Size = New System.Drawing.Size(121, 21)
         Me.SM_cbTriggers.TabIndex = 5
         '
+        'SM_lbStates
+        '
+        Me.TableLayoutPanel4.SetColumnSpan(Me.SM_lbStates, 2)
+        Me.SM_lbStates.FormattingEnabled = True
+        Me.SM_lbStates.Location = New System.Drawing.Point(3, 27)
+        Me.SM_lbStates.Name = "SM_lbStates"
+        Me.TableLayoutPanel4.SetRowSpan(Me.SM_lbStates, 2)
+        Me.SM_lbStates.Size = New System.Drawing.Size(143, 420)
+        Me.SM_lbStates.TabIndex = 8
+        '
         'tpEventEditor
         '
         Me.tpEventEditor.BackColor = System.Drawing.SystemColors.Control
         Me.tpEventEditor.Controls.Add(Me.tlpEventEditor)
         Me.tpEventEditor.Location = New System.Drawing.Point(4, 22)
         Me.tpEventEditor.Name = "tpEventEditor"
-        Me.tpEventEditor.Size = New System.Drawing.Size(936, 653)
+        Me.tpEventEditor.Size = New System.Drawing.Size(1308, 642)
         Me.tpEventEditor.TabIndex = 4
         Me.tpEventEditor.Text = "Event Editor"
         '
@@ -1431,6 +1756,61 @@ Partial Class frmMain
         Me.AE_lblDevices.Text = "Devices"
         Me.AE_lblDevices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'AE_btnNew
+        '
+        Me.AE_btnNew.Location = New System.Drawing.Point(3, 585)
+        Me.AE_btnNew.Name = "AE_btnNew"
+        Me.AE_btnNew.Size = New System.Drawing.Size(57, 23)
+        Me.AE_btnNew.TabIndex = 23
+        Me.AE_btnNew.Text = "New"
+        Me.AE_btnNew.UseVisualStyleBackColor = True
+        '
+        'AE_btnDel
+        '
+        Me.AE_btnDel.Location = New System.Drawing.Point(66, 585)
+        Me.AE_btnDel.Name = "AE_btnDel"
+        Me.AE_btnDel.Size = New System.Drawing.Size(58, 23)
+        Me.AE_btnDel.TabIndex = 22
+        Me.AE_btnDel.Text = "Delete"
+        Me.AE_btnDel.UseVisualStyleBackColor = True
+        '
+        'AE_btnClear
+        '
+        Me.AE_btnClear.Location = New System.Drawing.Point(1231, 585)
+        Me.AE_btnClear.Name = "AE_btnClear"
+        Me.AE_btnClear.Size = New System.Drawing.Size(66, 23)
+        Me.AE_btnClear.TabIndex = 26
+        Me.AE_btnClear.Text = "Clear"
+        Me.AE_btnClear.UseVisualStyleBackColor = True
+        '
+        'AE_btnSave
+        '
+        Me.AE_btnSave.Location = New System.Drawing.Point(1118, 585)
+        Me.AE_btnSave.Name = "AE_btnSave"
+        Me.AE_btnSave.Size = New System.Drawing.Size(65, 23)
+        Me.AE_btnSave.TabIndex = 25
+        Me.AE_btnSave.Text = "Save"
+        Me.AE_btnSave.UseVisualStyleBackColor = True
+        '
+        'AE_lblName
+        '
+        Me.AE_lblName.AutoSize = True
+        Me.AE_lblName.Location = New System.Drawing.Point(158, 40)
+        Me.AE_lblName.Name = "AE_lblName"
+        Me.AE_lblName.Size = New System.Drawing.Size(75, 13)
+        Me.AE_lblName.TabIndex = 19
+        Me.AE_lblName.Text = "Device Name:"
+        Me.AE_lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'AE_lbDeviceName
+        '
+        Me.AE_lbDeviceName.AutoSize = True
+        Me.TableLayoutPanel1.SetColumnSpan(Me.AE_lbDeviceName, 2)
+        Me.AE_lbDeviceName.Location = New System.Drawing.Point(297, 40)
+        Me.AE_lbDeviceName.Name = "AE_lbDeviceName"
+        Me.AE_lbDeviceName.Size = New System.Drawing.Size(0, 13)
+        Me.AE_lbDeviceName.TabIndex = 29
+        '
         'gbAlarmSettings
         '
         Me.gbAlarmSettings.Controls.Add(Me.AE_combWarningAlarms)
@@ -1641,61 +2021,6 @@ Partial Class frmMain
         Me.Label5.TabIndex = 16
         Me.Label5.Text = "Threshold:"
         '
-        'AE_btnNew
-        '
-        Me.AE_btnNew.Location = New System.Drawing.Point(3, 585)
-        Me.AE_btnNew.Name = "AE_btnNew"
-        Me.AE_btnNew.Size = New System.Drawing.Size(57, 23)
-        Me.AE_btnNew.TabIndex = 23
-        Me.AE_btnNew.Text = "New"
-        Me.AE_btnNew.UseVisualStyleBackColor = True
-        '
-        'AE_btnDel
-        '
-        Me.AE_btnDel.Location = New System.Drawing.Point(66, 585)
-        Me.AE_btnDel.Name = "AE_btnDel"
-        Me.AE_btnDel.Size = New System.Drawing.Size(58, 23)
-        Me.AE_btnDel.TabIndex = 22
-        Me.AE_btnDel.Text = "Delete"
-        Me.AE_btnDel.UseVisualStyleBackColor = True
-        '
-        'AE_btnClear
-        '
-        Me.AE_btnClear.Location = New System.Drawing.Point(1231, 585)
-        Me.AE_btnClear.Name = "AE_btnClear"
-        Me.AE_btnClear.Size = New System.Drawing.Size(66, 23)
-        Me.AE_btnClear.TabIndex = 26
-        Me.AE_btnClear.Text = "Clear"
-        Me.AE_btnClear.UseVisualStyleBackColor = True
-        '
-        'AE_btnSave
-        '
-        Me.AE_btnSave.Location = New System.Drawing.Point(1118, 585)
-        Me.AE_btnSave.Name = "AE_btnSave"
-        Me.AE_btnSave.Size = New System.Drawing.Size(65, 23)
-        Me.AE_btnSave.TabIndex = 25
-        Me.AE_btnSave.Text = "Save"
-        Me.AE_btnSave.UseVisualStyleBackColor = True
-        '
-        'AE_lblName
-        '
-        Me.AE_lblName.AutoSize = True
-        Me.AE_lblName.Location = New System.Drawing.Point(158, 40)
-        Me.AE_lblName.Name = "AE_lblName"
-        Me.AE_lblName.Size = New System.Drawing.Size(75, 13)
-        Me.AE_lblName.TabIndex = 19
-        Me.AE_lblName.Text = "Device Name:"
-        Me.AE_lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'AE_lbDeviceName
-        '
-        Me.AE_lbDeviceName.AutoSize = True
-        Me.TableLayoutPanel1.SetColumnSpan(Me.AE_lbDeviceName, 2)
-        Me.AE_lbDeviceName.Location = New System.Drawing.Point(297, 40)
-        Me.AE_lbDeviceName.Name = "AE_lbDeviceName"
-        Me.AE_lbDeviceName.Size = New System.Drawing.Size(0, 13)
-        Me.AE_lbDeviceName.TabIndex = 29
-        '
         'tpvConfigurator
         '
         Me.tpvConfigurator.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -1712,206 +2037,6 @@ Partial Class frmMain
         Me.tpvConfigurator.SelectedIndex = 0
         Me.tpvConfigurator.Size = New System.Drawing.Size(1316, 668)
         Me.tpvConfigurator.TabIndex = 0
-        '
-        'SM_lblAnalogZero
-        '
-        Me.SM_lblAnalogZero.AutoSize = True
-        Me.SM_lblAnalogZero.Location = New System.Drawing.Point(134, 147)
-        Me.SM_lblAnalogZero.Name = "SM_lblAnalogZero"
-        Me.SM_lblAnalogZero.Size = New System.Drawing.Size(21, 13)
-        Me.SM_lblAnalogZero.TabIndex = 7
-        Me.SM_lblAnalogZero.Text = "0%"
-        '
-        'SM_lblAnalogHundred
-        '
-        Me.SM_lblAnalogHundred.AutoSize = True
-        Me.SM_lblAnalogHundred.Location = New System.Drawing.Point(125, 12)
-        Me.SM_lblAnalogHundred.Name = "SM_lblAnalogHundred"
-        Me.SM_lblAnalogHundred.Size = New System.Drawing.Size(33, 13)
-        Me.SM_lblAnalogHundred.TabIndex = 8
-        Me.SM_lblAnalogHundred.Text = "100%"
-        '
-        'SM_cbAreas
-        '
-        Me.SM_cbAreas.FormattingEnabled = True
-        Me.SM_cbAreas.Items.AddRange(New Object() {"Entry", "Desk", "Lamps", "Bath", "Nightlight"})
-        Me.SM_cbAreas.Location = New System.Drawing.Point(17, 100)
-        Me.SM_cbAreas.Name = "SM_cbAreas"
-        Me.SM_cbAreas.Size = New System.Drawing.Size(123, 21)
-        Me.SM_cbAreas.TabIndex = 9
-        '
-        'SM_gbSchedule
-        '
-        Me.SM_gbSchedule.Controls.Add(Me.SM_lblMinutesStop)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_rbPMStop)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_lblMinutesStart)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_rbPMStart)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_lblHoursStop)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_lblStop)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_lblHoursStart)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_lblStart)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_rbAMStop)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_rbAMStart)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_udMinutesStop)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_udHoursStop)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_udMinutesStart)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_udHoursStart)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_dtpStop)
-        Me.SM_gbSchedule.Controls.Add(Me.SM_dtpStart)
-        Me.SM_gbSchedule.Location = New System.Drawing.Point(13, 96)
-        Me.SM_gbSchedule.Name = "SM_gbSchedule"
-        Me.SM_gbSchedule.Size = New System.Drawing.Size(585, 164)
-        Me.SM_gbSchedule.TabIndex = 24
-        Me.SM_gbSchedule.TabStop = False
-        Me.SM_gbSchedule.Text = "Scheduler"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 65)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(78, 13)
-        Me.Label2.TabIndex = 10
-        Me.Label2.Text = "Shade Percent"
-        '
-        'SM_rbShadeClosed
-        '
-        Me.SM_rbShadeClosed.AutoSize = True
-        Me.SM_rbShadeClosed.Location = New System.Drawing.Point(59, 87)
-        Me.SM_rbShadeClosed.Name = "SM_rbShadeClosed"
-        Me.SM_rbShadeClosed.Size = New System.Drawing.Size(57, 17)
-        Me.SM_rbShadeClosed.TabIndex = 11
-        Me.SM_rbShadeClosed.TabStop = True
-        Me.SM_rbShadeClosed.Text = "Closed"
-        Me.SM_rbShadeClosed.UseVisualStyleBackColor = True
-        '
-        'SM_rbSunTrackOff
-        '
-        Me.SM_rbSunTrackOff.AutoSize = True
-        Me.SM_rbSunTrackOff.Location = New System.Drawing.Point(62, 104)
-        Me.SM_rbSunTrackOff.Name = "SM_rbSunTrackOff"
-        Me.SM_rbSunTrackOff.Size = New System.Drawing.Size(39, 17)
-        Me.SM_rbSunTrackOff.TabIndex = 14
-        Me.SM_rbSunTrackOff.TabStop = True
-        Me.SM_rbSunTrackOff.Text = "Off"
-        Me.SM_rbSunTrackOff.UseVisualStyleBackColor = True
-        '
-        'SM_rbSunTrackOn
-        '
-        Me.SM_rbSunTrackOn.AutoSize = True
-        Me.SM_rbSunTrackOn.Location = New System.Drawing.Point(62, 62)
-        Me.SM_rbSunTrackOn.Name = "SM_rbSunTrackOn"
-        Me.SM_rbSunTrackOn.Size = New System.Drawing.Size(39, 17)
-        Me.SM_rbSunTrackOn.TabIndex = 13
-        Me.SM_rbSunTrackOn.TabStop = True
-        Me.SM_rbSunTrackOn.Text = "On"
-        Me.SM_rbSunTrackOn.UseVisualStyleBackColor = True
-        '
-        'SM_rbShadeOpen
-        '
-        Me.SM_rbShadeOpen.AutoSize = True
-        Me.SM_rbShadeOpen.Location = New System.Drawing.Point(59, 46)
-        Me.SM_rbShadeOpen.Name = "SM_rbShadeOpen"
-        Me.SM_rbShadeOpen.Size = New System.Drawing.Size(51, 17)
-        Me.SM_rbShadeOpen.TabIndex = 12
-        Me.SM_rbShadeOpen.TabStop = True
-        Me.SM_rbShadeOpen.Text = "Open"
-        Me.SM_rbShadeOpen.UseVisualStyleBackColor = True
-        '
-        'SM_tcShades
-        '
-        Me.SM_tcShades.Controls.Add(Me.SM_tpSetting1)
-        Me.SM_tcShades.Controls.Add(Me.SM_tpSetting2)
-        Me.SM_tcShades.Controls.Add(Me.TabPage1)
-        Me.SM_tcShades.Location = New System.Drawing.Point(279, 16)
-        Me.SM_tcShades.Name = "SM_tcShades"
-        Me.SM_tcShades.SelectedIndex = 0
-        Me.SM_tcShades.Size = New System.Drawing.Size(169, 201)
-        Me.SM_tcShades.TabIndex = 16
-        '
-        'SM_tpSetting1
-        '
-        Me.SM_tpSetting1.BackColor = System.Drawing.SystemColors.Control
-        Me.SM_tpSetting1.Controls.Add(Me.Label4)
-        Me.SM_tpSetting1.Controls.Add(Me.SM_rbShadeOpen)
-        Me.SM_tpSetting1.Controls.Add(Me.SM_rbShadeClosed)
-        Me.SM_tpSetting1.Location = New System.Drawing.Point(4, 22)
-        Me.SM_tpSetting1.Name = "SM_tpSetting1"
-        Me.SM_tpSetting1.Padding = New System.Windows.Forms.Padding(3)
-        Me.SM_tpSetting1.Size = New System.Drawing.Size(161, 175)
-        Me.SM_tpSetting1.TabIndex = 0
-        Me.SM_tpSetting1.Text = "Setting 1"
-        '
-        'SM_tpSetting2
-        '
-        Me.SM_tpSetting2.BackColor = System.Drawing.SystemColors.Control
-        Me.SM_tpSetting2.Controls.Add(Me.SM_tbAnalogValue)
-        Me.SM_tpSetting2.Controls.Add(Me.Label2)
-        Me.SM_tpSetting2.Controls.Add(Me.SM_lblAnalogZero)
-        Me.SM_tpSetting2.Controls.Add(Me.SM_lblAnalogHundred)
-        Me.SM_tpSetting2.Location = New System.Drawing.Point(4, 22)
-        Me.SM_tpSetting2.Name = "SM_tpSetting2"
-        Me.SM_tpSetting2.Padding = New System.Windows.Forms.Padding(3)
-        Me.SM_tpSetting2.Size = New System.Drawing.Size(161, 175)
-        Me.SM_tpSetting2.TabIndex = 1
-        Me.SM_tpSetting2.Text = "Setting 2"
-        '
-        'TabPage1
-        '
-        Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage1.Controls.Add(Me.Label3)
-        Me.TabPage1.Controls.Add(Me.SM_rbSunTrackOn)
-        Me.TabPage1.Controls.Add(Me.SM_rbSunTrackOff)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(161, 175)
-        Me.TabPage1.TabIndex = 2
-        Me.TabPage1.Text = "Setting 3"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(39, 20)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(71, 13)
-        Me.Label3.TabIndex = 15
-        Me.Label3.Text = "Sun Tracking"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(29, 15)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(109, 13)
-        Me.Label4.TabIndex = 13
-        Me.Label4.Text = "Shades Open/Closed"
-        '
-        'LoyaltyProgramToolStripMenuItem
-        '
-        Me.LoyaltyProgramToolStripMenuItem.Name = "LoyaltyProgramToolStripMenuItem"
-        Me.LoyaltyProgramToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
-        Me.LoyaltyProgramToolStripMenuItem.Text = "Loyalty Program"
-        '
-        'GroupBox7
-        '
-        Me.GroupBox7.Controls.Add(Me.SM_cbLoyaltyProgram)
-        Me.GroupBox7.Location = New System.Drawing.Point(185, 19)
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(183, 60)
-        Me.GroupBox7.TabIndex = 25
-        Me.GroupBox7.TabStop = False
-        Me.GroupBox7.Text = "Settings"
-        '
-        'SM_cbLoyaltyProgram
-        '
-        Me.SM_cbLoyaltyProgram.AutoSize = True
-        Me.SM_cbLoyaltyProgram.Location = New System.Drawing.Point(20, 25)
-        Me.SM_cbLoyaltyProgram.Name = "SM_cbLoyaltyProgram"
-        Me.SM_cbLoyaltyProgram.Size = New System.Drawing.Size(123, 17)
-        Me.SM_cbLoyaltyProgram.TabIndex = 0
-        Me.SM_cbLoyaltyProgram.Text = "Use Loyalty Program"
-        Me.SM_cbLoyaltyProgram.UseVisualStyleBackColor = True
         '
         'frmMain
         '
@@ -1937,8 +2062,27 @@ Partial Class frmMain
         Me.GroupBox5.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
+        Me.SM_gbTstatControls.ResumeLayout(False)
+        Me.SM_gbTstatControls.PerformLayout()
+        CType(Me.SM_tbTstatSlider, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SM_nudSetPoint, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SM_gbTVControls.ResumeLayout(False)
+        Me.SM_gbTVControls.PerformLayout()
+        Me.SM_gbLights.ResumeLayout(False)
+        Me.SM_gbLights.PerformLayout()
+        Me.SM_tcShades.ResumeLayout(False)
+        Me.SM_tpSetting1.ResumeLayout(False)
+        Me.SM_tpSetting1.PerformLayout()
+        Me.SM_tpSetting2.ResumeLayout(False)
+        Me.SM_tpSetting2.PerformLayout()
         CType(Me.SM_tbAnalogValue, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage1.ResumeLayout(False)
+        Me.TabPage1.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox7.ResumeLayout(False)
+        Me.GroupBox7.PerformLayout()
+        Me.SM_gbSchedule.ResumeLayout(False)
+        Me.SM_gbSchedule.PerformLayout()
         CType(Me.SM_udMinutesStop, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SM_udHoursStop, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SM_udMinutesStart, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1970,17 +2114,6 @@ Partial Class frmMain
         Me.AE_gbAlarmType.ResumeLayout(False)
         Me.AE_gbAlarmType.PerformLayout()
         Me.tpvConfigurator.ResumeLayout(False)
-        Me.SM_gbSchedule.ResumeLayout(False)
-        Me.SM_gbSchedule.PerformLayout()
-        Me.SM_tcShades.ResumeLayout(False)
-        Me.SM_tpSetting1.ResumeLayout(False)
-        Me.SM_tpSetting1.PerformLayout()
-        Me.SM_tpSetting2.ResumeLayout(False)
-        Me.SM_tpSetting2.PerformLayout()
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
-        Me.GroupBox7.ResumeLayout(False)
-        Me.GroupBox7.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2007,7 +2140,6 @@ Partial Class frmMain
     Friend WithEvents SQLServerConfigurationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tpStateManager As System.Windows.Forms.TabPage
     Friend WithEvents TableLayoutPanel4 As System.Windows.Forms.TableLayoutPanel
-    Friend WithEvents ListView1 As System.Windows.Forms.ListView
     Friend WithEvents tpEventEditor As System.Windows.Forms.TabPage
     Friend WithEvents tlpEventEditor As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents EE_lblEvents As System.Windows.Forms.Label
@@ -2151,5 +2283,16 @@ Partial Class frmMain
     Friend WithEvents LoyaltyProgramToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
     Friend WithEvents SM_cbLoyaltyProgram As System.Windows.Forms.CheckBox
+    Friend WithEvents SM_gbLights As System.Windows.Forms.GroupBox
+    Friend WithEvents SM_gbTVControls As System.Windows.Forms.GroupBox
+    Friend WithEvents SM_rbTvOff As System.Windows.Forms.RadioButton
+    Friend WithEvents SM_rbTvOn As System.Windows.Forms.RadioButton
+    Friend WithEvents SM_gbTstatControls As System.Windows.Forms.GroupBox
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents SM_tbTstatSlider As System.Windows.Forms.TrackBar
+    Friend WithEvents SM_nudSetPoint As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents SM_lbStates As System.Windows.Forms.ListBox
 
 End Class
