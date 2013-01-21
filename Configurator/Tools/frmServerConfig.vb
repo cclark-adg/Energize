@@ -3,9 +3,10 @@
     Private Sub Label1_Click(sender As System.Object, e As System.EventArgs) Handles Label1.Click
 
     End Sub
-
-    Private Sub frmServerConfig_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-
+    Private Sub frmServerConfig_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.FormClosing
+        If frmMain.SQLCONNECTED Then
+            frmMain.updateAll()
+        End If
     End Sub
     Public Sub loadForm(ByRef Server_Address As String, ByRef Username As String, ByRef Password As String)
         tbServerName.Text = Server_Address

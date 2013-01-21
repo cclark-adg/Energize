@@ -36,7 +36,9 @@ Public Class Energize
         PASSWORD = "adg10990"
 
         sqlCmd.Connection = connectToDatabase()
-
+        If CONNECTED Then
+            tssSQLStatus.Text = "Connected."
+        End If
         If CONNECTED Then
             'some sql statements to get every warning code from sql server (use tbl_alarms) and a statement to get every event id from tbl_events
             'these will be used for KPI and for color coding.
@@ -84,6 +86,7 @@ Public Class Energize
     'Main thread used to scan the database for alarms
     Private Sub tmrAlarm_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrAlarm.Tick
         If CONNECTED Then
+            tssSQLStatus.Text = "Connected."
             updateAlarm()
         End If
 

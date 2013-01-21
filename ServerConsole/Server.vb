@@ -201,13 +201,26 @@ Module Server
                     If byteRead > 0 Then
 
                         dataRec = ASCIIEncoding.ASCII.GetString(byteRec)
-                        Dim trims() As Char = {Chr(2), Chr(3)}
+                        Dim trims() As Char = {Chr(2), Chr(3), Chr(32)}
                         dataRec.Trim(trims)
 
                         Dim subMessages() As String = dataRec.Split(Chr(3))
 
-                        RaiseEvent dataReceived(Me, subMessages(0))
-                        delimtMessage(subMessages(0))
+                        'Currently for some reason, I'm getting an extra message that is entirely blank after I split/trim the incoming message. I'm not 100% positive as to how to solve this
+                        'effectivly however I'm going to set the maximum number of messages to be read in at 5. THIS IS NOT A PERMANT SOLUTION. However this will work as long as we do not receive more than 
+                        '5 messages at a time from a SINGLE socket. Odds are...I'm going to need to fix this sooner rather than later.
+                        For i = 0 To 4 Step 1
+                            RaiseEvent dataReceived(Me, subMessages(i))
+                            delimtMessage(subMessages(i))
+                        Next
+
+                        'For Each a As String In subMessages
+                        'RaiseEvent dataReceived(Me, a)
+                        'delimtMessage(a)
+                        'Next
+                        'RaiseEvent dataReceived(Me, subMessages(0))
+                        'delimtMessage(subMessages(0))
+
                     End If
 
 

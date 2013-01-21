@@ -90,6 +90,7 @@ Partial Class Energize
         Me.AcknowledgedAlarmsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.WarningsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tssSQLStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.cmsLvAlarms.SuspendLayout()
         Me.cmsKPI.SuspendLayout()
         Me.keyPointsOfInterest.SuspendLayout()
@@ -99,6 +100,7 @@ Partial Class Energize
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.cmsNotifyIcon.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -668,6 +670,7 @@ Partial Class Energize
         'StatusStrip1
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.StatusStrip1, 4)
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tssSQLStatus})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 774)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -716,6 +719,12 @@ Partial Class Energize
         Me.WarningsToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
         Me.WarningsToolStripMenuItem.Text = "Warnings"
         '
+        'tssSQLStatus
+        '
+        Me.tssSQLStatus.Name = "tssSQLStatus"
+        Me.tssSQLStatus.Size = New System.Drawing.Size(91, 15)
+        Me.tssSQLStatus.Text = "Not Connected."
+        '
         'Energize
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -743,6 +752,8 @@ Partial Class Energize
         Me.ToolStripContainer1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.cmsNotifyIcon.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -813,5 +824,6 @@ Partial Class Energize
     Friend WithEvents WarningsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SQLServerConfigurationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tssSQLStatus As System.Windows.Forms.ToolStripStatusLabel
 
 End Class

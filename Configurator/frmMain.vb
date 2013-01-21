@@ -86,6 +86,7 @@ Public Class frmMain
             SqlConnection.Open()
             SQLCONNECTED = True
             MsgBox("Connected.")
+
         Catch ex As SqlException
             MsgBox("Error Connecting to Database: " & ex.Message)
             SQLCONNECTED = False
@@ -464,13 +465,21 @@ Public Class frmMain
     Private Sub AE_getWarnings()
         AE_warningEventsCodes.Clear()
         AE_combWarningAlarms.Items.Clear()
-        sqlCmd.CommandText = "Select id,description from tbl_events"
+        sqlCmd.CommandText = "Select id,description,Alarm_Code from tbl_events"
         If SQLCONNECTED Then
             Try
                 sqlReader = sqlCmd.ExecuteReader()
                 While sqlReader.Read()
+
                     AE_warningEventsCodes.Add(sqlReader(0).ToString)
                     AE_combWarningAlarms.Items.Add(sqlReader(1).ToString)
+                    AE_cbErrorAlarmCode.Items.Add(sqlReader(1).ToString)
+                    'If the Error code is a warning, add it to the warning list, if it is a alarm, add it to the alarm list, filtering the errors
+                    'TODO: This doesn't work at the moment, it causes some out of bounds exceptions else where. For the moment, just going to use the non filtered method
+
+                    'If sqlReader(2).ToString.StartsWith("W") Then AE_combWarningAlarms.Items.Add(sqlReader(1).ToString)
+                    'If sqlReader(2).ToString.StartsWith("A") Then AE_cbErrorAlarmCode.Items.Add(sqlReader(1).ToString)
+
                 End While
 
             Catch ex As SqlException
@@ -483,7 +492,7 @@ Public Class frmMain
         Else
             tssLbl_Status.Text = "Not Connected to Database. Please check Connection settings and/or make sure SQL Server is running."
         End If
-        
+
     End Sub
     Private Sub AE_clearWarning(ByVal index As Integer)
         AE_tbWarningTimeFrame.Text = ""
@@ -527,6 +536,7 @@ Public Class frmMain
             AE_lblWarningTimeFrame.Visible = True
             AE_lblWarningThreshold.Visible = True
             AE_combWarningAlarms.Visible = True
+            AE_cbErrorAlarmCode.Items.Clear()
             AE_getWarnings()
             AE_combWarningAlarms.SelectedIndex = -1
         Else
@@ -541,6 +551,7 @@ Public Class frmMain
                 AE_lblWarningThreshold.Visible = False
                 AE_combWarningAlarms.Visible = False
                 AE_combWarningAlarms.Items.Clear()
+                AE_cbErrorAlarmCode.Items.Clear()
             End If
 
         End If
@@ -604,6 +615,7 @@ Public Class frmMain
                         AE_tbWarningTimeFrame.Text = ""
                         AE_combWarningAlarms.SelectedIndex = -1
                         AE_combWarningAlarms.Items.Clear()
+
                     End If
                 Else
                     AE_cbWarning.Visible = False
@@ -1376,6 +1388,19 @@ Public Class frmMain
         End If
 
     End Sub
+
+    'When connecting to a database, refresh all information 
+    Public Sub updateAll()
+        If SQLCONNECTED Then
+            updateDeviceTypes()
+            updateRoomList()
+            updateRoomList()
+            updateTVRoomListByFloor()
+            updateTVRoomListByType()
+            updateStateManager()
+            AE_getWarnings()
+        End If
+    End Sub
     Private Sub frmMain_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
         SERVER_ADDRESS = "ADGATL-PC"
@@ -1426,7 +1451,7 @@ Public Class frmMain
 
 
 
-    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs)
         Dim eor As String = ""
         For Each s As VptSession In sessions
             s.GetLastError(eor)
@@ -1435,19 +1460,5 @@ Public Class frmMain
     End Sub
 
     
-    
-
-    Private Sub GroupBox4_Enter(sender As System.Object, e As System.EventArgs) Handles GroupBox4.Enter
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs)
-
-    End Sub
-
-    
-    
-    
-    
-    
+   
 End Class

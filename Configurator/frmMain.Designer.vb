@@ -143,8 +143,7 @@ Partial Class frmMain
         Me.RE_tvRoomsByFloor = New System.Windows.Forms.TreeView()
         Me.RE_tbByType = New System.Windows.Forms.TabPage()
         Me.RE_tvRoomsByType = New System.Windows.Forms.TreeView()
-        Me.RE_btnSendProgram = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.RE_btnSave = New System.Windows.Forms.Button()
         Me.RE_btnNew = New System.Windows.Forms.Button()
         Me.RE_btnDelete = New System.Windows.Forms.Button()
         Me.tpRoomType = New System.Windows.Forms.TabPage()
@@ -169,6 +168,9 @@ Partial Class frmMain
         Me.RTE_btnSave = New System.Windows.Forms.Button()
         Me.RTE_btnClear = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.RTE_rbStateDisabled = New System.Windows.Forms.RadioButton()
+        Me.RTE_rbStateEnabled = New System.Windows.Forms.RadioButton()
+        Me.RTE_cbDefaultState = New System.Windows.Forms.ComboBox()
         Me.tpDeviceType = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.AE_lbDevices = New System.Windows.Forms.ListBox()
@@ -200,6 +202,24 @@ Partial Class frmMain
         Me.AE_tbTimeFrame = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.tpvConfigurator = New System.Windows.Forms.TabControl()
+        Me.RE_gbRoomStatus = New System.Windows.Forms.GroupBox()
+        Me.RE_gbRoomSettings = New System.Windows.Forms.GroupBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.RE_cbRoomState = New System.Windows.Forms.ComboBox()
+        Me.RE_lblProgramLoaded = New System.Windows.Forms.Label()
+        Me.RE_lblFirmwareLoaded = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.RE_btnBrowseProgram = New System.Windows.Forms.Button()
+        Me.RE_btnResendProgram = New System.Windows.Forms.Button()
+        Me.RE_btnBrowseFirmware = New System.Windows.Forms.Button()
+        Me.RE_btnResendFirmware = New System.Windows.Forms.Button()
+        Me.RE_rbOccupied = New System.Windows.Forms.RadioButton()
+        Me.RE_rbUnoccupied = New System.Windows.Forms.RadioButton()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.AE_cbErrorAlarmCode = New System.Windows.Forms.ComboBox()
         Me.tvMenuStrip.SuspendLayout()
         Me.RE_cmsTV.SuspendLayout()
         Me.mainStrip.SuspendLayout()
@@ -237,12 +257,15 @@ Partial Class frmMain
         Me.TableLayoutPanel3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.tpDeviceType.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.gbAlarmSettings.SuspendLayout()
         Me.AE_gbSignalType.SuspendLayout()
         Me.AE_gbAlarmType.SuspendLayout()
         Me.tpvConfigurator.SuspendLayout()
+        Me.RE_gbRoomStatus.SuspendLayout()
+        Me.RE_gbRoomSettings.SuspendLayout()
         Me.SuspendLayout()
         '
         'tvMenuStrip
@@ -1048,7 +1071,7 @@ Partial Class frmMain
         Me.tlpEventEditor.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.tlpEventEditor.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.tlpEventEditor.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.tlpEventEditor.Size = New System.Drawing.Size(936, 653)
+        Me.tlpEventEditor.Size = New System.Drawing.Size(1308, 642)
         Me.tlpEventEditor.TabIndex = 0
         '
         'EE_lblEvents
@@ -1070,7 +1093,7 @@ Partial Class frmMain
         Me.EE_lbEvents.Location = New System.Drawing.Point(3, 43)
         Me.EE_lbEvents.Name = "EE_lbEvents"
         Me.tlpEventEditor.SetRowSpan(Me.EE_lbEvents, 3)
-        Me.EE_lbEvents.Size = New System.Drawing.Size(156, 407)
+        Me.EE_lbEvents.Size = New System.Drawing.Size(156, 394)
         Me.EE_lbEvents.TabIndex = 3
         '
         'EE_lblAlarmCodeDisplay
@@ -1100,7 +1123,7 @@ Partial Class frmMain
         Me.tlpEventEditor.SetColumnSpan(Me.EE_rtbDescription, 3)
         Me.EE_rtbDescription.Location = New System.Drawing.Point(235, 115)
         Me.EE_rtbDescription.Name = "EE_rtbDescription"
-        Me.EE_rtbDescription.Size = New System.Drawing.Size(501, 113)
+        Me.EE_rtbDescription.Size = New System.Drawing.Size(873, 113)
         Me.EE_rtbDescription.TabIndex = 7
         Me.EE_rtbDescription.Text = ""
         '
@@ -1108,9 +1131,9 @@ Partial Class frmMain
         '
         Me.EE_rtbSolution.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tlpEventEditor.SetColumnSpan(Me.EE_rtbSolution, 3)
-        Me.EE_rtbSolution.Location = New System.Drawing.Point(235, 311)
+        Me.EE_rtbSolution.Location = New System.Drawing.Point(235, 309)
         Me.EE_rtbSolution.Name = "EE_rtbSolution"
-        Me.EE_rtbSolution.Size = New System.Drawing.Size(501, 113)
+        Me.EE_rtbSolution.Size = New System.Drawing.Size(873, 113)
         Me.EE_rtbSolution.TabIndex = 8
         Me.EE_rtbSolution.Text = ""
         '
@@ -1118,7 +1141,7 @@ Partial Class frmMain
         '
         Me.EE_lblSolution.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.EE_lblSolution.AutoSize = True
-        Me.EE_lblSolution.Location = New System.Drawing.Point(165, 361)
+        Me.EE_lblSolution.Location = New System.Drawing.Point(165, 359)
         Me.EE_lblSolution.Name = "EE_lblSolution"
         Me.EE_lblSolution.Size = New System.Drawing.Size(45, 13)
         Me.EE_lblSolution.TabIndex = 9
@@ -1126,7 +1149,7 @@ Partial Class frmMain
         '
         'EE_tbPriority
         '
-        Me.EE_tbPriority.Location = New System.Drawing.Point(533, 43)
+        Me.EE_tbPriority.Location = New System.Drawing.Point(905, 43)
         Me.EE_tbPriority.Name = "EE_tbPriority"
         Me.EE_tbPriority.Size = New System.Drawing.Size(100, 20)
         Me.EE_tbPriority.TabIndex = 11
@@ -1135,7 +1158,7 @@ Partial Class frmMain
         '
         Me.Label10.AutoSize = True
         Me.Label10.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label10.Location = New System.Drawing.Point(426, 40)
+        Me.Label10.Location = New System.Drawing.Point(798, 40)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(101, 24)
         Me.Label10.TabIndex = 10
@@ -1144,7 +1167,7 @@ Partial Class frmMain
         '
         'EE_btnNew
         '
-        Me.EE_btnNew.Location = New System.Drawing.Point(3, 459)
+        Me.EE_btnNew.Location = New System.Drawing.Point(3, 454)
         Me.EE_btnNew.Name = "EE_btnNew"
         Me.EE_btnNew.Size = New System.Drawing.Size(75, 23)
         Me.EE_btnNew.TabIndex = 12
@@ -1153,7 +1176,7 @@ Partial Class frmMain
         '
         'EE_btnDelete
         '
-        Me.EE_btnDelete.Location = New System.Drawing.Point(84, 459)
+        Me.EE_btnDelete.Location = New System.Drawing.Point(84, 454)
         Me.EE_btnDelete.Name = "EE_btnDelete"
         Me.EE_btnDelete.Size = New System.Drawing.Size(75, 23)
         Me.EE_btnDelete.TabIndex = 13
@@ -1162,7 +1185,7 @@ Partial Class frmMain
         '
         'EE_btnSave
         '
-        Me.EE_btnSave.Location = New System.Drawing.Point(426, 459)
+        Me.EE_btnSave.Location = New System.Drawing.Point(798, 454)
         Me.EE_btnSave.Name = "EE_btnSave"
         Me.EE_btnSave.Size = New System.Drawing.Size(75, 23)
         Me.EE_btnSave.TabIndex = 14
@@ -1171,7 +1194,7 @@ Partial Class frmMain
         '
         'EE_btnClear
         '
-        Me.EE_btnClear.Location = New System.Drawing.Point(533, 459)
+        Me.EE_btnClear.Location = New System.Drawing.Point(905, 454)
         Me.EE_btnClear.Name = "EE_btnClear"
         Me.EE_btnClear.Size = New System.Drawing.Size(75, 23)
         Me.EE_btnClear.TabIndex = 15
@@ -1205,10 +1228,11 @@ Partial Class frmMain
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel2.Controls.Add(Me.gbRoomDetails, 2, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.RE_tcRoomViewer, 0, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.RE_btnSendProgram, 2, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.Button1, 3, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.RE_btnNew, 0, 4)
         Me.TableLayoutPanel2.Controls.Add(Me.RE_btnDelete, 1, 4)
+        Me.TableLayoutPanel2.Controls.Add(Me.RE_gbRoomStatus, 2, 1)
+        Me.TableLayoutPanel2.Controls.Add(Me.RE_gbRoomSettings, 3, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.RE_btnSave, 3, 3)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
@@ -1239,7 +1263,7 @@ Partial Class frmMain
         Me.gbRoomDetails.Controls.Add(Me.RE_lblRoomType)
         Me.gbRoomDetails.Controls.Add(Me.RE_tbRoomName)
         Me.gbRoomDetails.Controls.Add(Me.RE_lblRoomName)
-        Me.gbRoomDetails.Location = New System.Drawing.Point(186, 3)
+        Me.gbRoomDetails.Location = New System.Drawing.Point(195, 3)
         Me.gbRoomDetails.Name = "gbRoomDetails"
         Me.gbRoomDetails.Size = New System.Drawing.Size(544, 219)
         Me.gbRoomDetails.TabIndex = 2
@@ -1410,23 +1434,14 @@ Partial Class frmMain
         Me.RE_tvRoomsByType.Size = New System.Drawing.Size(163, 569)
         Me.RE_tvRoomsByType.TabIndex = 6
         '
-        'RE_btnSendProgram
+        'RE_btnSave
         '
-        Me.RE_btnSendProgram.Location = New System.Drawing.Point(186, 581)
-        Me.RE_btnSendProgram.Name = "RE_btnSendProgram"
-        Me.RE_btnSendProgram.Size = New System.Drawing.Size(69, 23)
-        Me.RE_btnSendProgram.TabIndex = 3
-        Me.RE_btnSendProgram.Text = "Send Program"
-        Me.RE_btnSendProgram.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(736, 581)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.RE_btnSave.Location = New System.Drawing.Point(755, 581)
+        Me.RE_btnSave.Name = "RE_btnSave"
+        Me.RE_btnSave.Size = New System.Drawing.Size(69, 23)
+        Me.RE_btnSave.TabIndex = 3
+        Me.RE_btnSave.Text = "Save"
+        Me.RE_btnSave.UseVisualStyleBackColor = True
         '
         'RE_btnNew
         '
@@ -1684,12 +1699,45 @@ Partial Class frmMain
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.RTE_rbStateDisabled)
+        Me.GroupBox3.Controls.Add(Me.RTE_rbStateEnabled)
+        Me.GroupBox3.Controls.Add(Me.RTE_cbDefaultState)
         Me.GroupBox3.Location = New System.Drawing.Point(934, 186)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(296, 192)
         Me.GroupBox3.TabIndex = 32
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Default States"
+        Me.GroupBox3.Text = "Default State"
+        '
+        'RTE_rbStateDisabled
+        '
+        Me.RTE_rbStateDisabled.AutoSize = True
+        Me.RTE_rbStateDisabled.Checked = True
+        Me.RTE_rbStateDisabled.Location = New System.Drawing.Point(123, 113)
+        Me.RTE_rbStateDisabled.Name = "RTE_rbStateDisabled"
+        Me.RTE_rbStateDisabled.Size = New System.Drawing.Size(66, 17)
+        Me.RTE_rbStateDisabled.TabIndex = 2
+        Me.RTE_rbStateDisabled.TabStop = True
+        Me.RTE_rbStateDisabled.Text = "Disabled"
+        Me.RTE_rbStateDisabled.UseVisualStyleBackColor = True
+        '
+        'RTE_rbStateEnabled
+        '
+        Me.RTE_rbStateEnabled.AutoSize = True
+        Me.RTE_rbStateEnabled.Location = New System.Drawing.Point(9, 113)
+        Me.RTE_rbStateEnabled.Name = "RTE_rbStateEnabled"
+        Me.RTE_rbStateEnabled.Size = New System.Drawing.Size(64, 17)
+        Me.RTE_rbStateEnabled.TabIndex = 1
+        Me.RTE_rbStateEnabled.Text = "Enabled"
+        Me.RTE_rbStateEnabled.UseVisualStyleBackColor = True
+        '
+        'RTE_cbDefaultState
+        '
+        Me.RTE_cbDefaultState.FormattingEnabled = True
+        Me.RTE_cbDefaultState.Location = New System.Drawing.Point(6, 44)
+        Me.RTE_cbDefaultState.Name = "RTE_cbDefaultState"
+        Me.RTE_cbDefaultState.Size = New System.Drawing.Size(150, 21)
+        Me.RTE_cbDefaultState.TabIndex = 0
         '
         'tpDeviceType
         '
@@ -1813,6 +1861,8 @@ Partial Class frmMain
         '
         'gbAlarmSettings
         '
+        Me.gbAlarmSettings.Controls.Add(Me.AE_cbErrorAlarmCode)
+        Me.gbAlarmSettings.Controls.Add(Me.Label14)
         Me.gbAlarmSettings.Controls.Add(Me.AE_combWarningAlarms)
         Me.gbAlarmSettings.Controls.Add(Me.AE_lblWarningCode)
         Me.gbAlarmSettings.Controls.Add(Me.AE_tbWarningTimeFrame)
@@ -1829,7 +1879,7 @@ Partial Class frmMain
         Me.gbAlarmSettings.Controls.Add(Me.Label5)
         Me.gbAlarmSettings.Location = New System.Drawing.Point(297, 63)
         Me.gbAlarmSettings.Name = "gbAlarmSettings"
-        Me.gbAlarmSettings.Size = New System.Drawing.Size(561, 465)
+        Me.gbAlarmSettings.Size = New System.Drawing.Size(609, 465)
         Me.gbAlarmSettings.TabIndex = 28
         Me.gbAlarmSettings.TabStop = False
         Me.gbAlarmSettings.Text = "Alarm Settings"
@@ -2038,6 +2088,181 @@ Partial Class frmMain
         Me.tpvConfigurator.Size = New System.Drawing.Size(1316, 668)
         Me.tpvConfigurator.TabIndex = 0
         '
+        'RE_gbRoomStatus
+        '
+        Me.RE_gbRoomStatus.Controls.Add(Me.TextBox3)
+        Me.RE_gbRoomStatus.Controls.Add(Me.Label13)
+        Me.RE_gbRoomStatus.Controls.Add(Me.RE_rbUnoccupied)
+        Me.RE_gbRoomStatus.Controls.Add(Me.RE_rbOccupied)
+        Me.RE_gbRoomStatus.Controls.Add(Me.RE_cbRoomState)
+        Me.RE_gbRoomStatus.Controls.Add(Me.Label12)
+        Me.RE_gbRoomStatus.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RE_gbRoomStatus.Location = New System.Drawing.Point(186, 228)
+        Me.RE_gbRoomStatus.Name = "RE_gbRoomStatus"
+        Me.RE_gbRoomStatus.Size = New System.Drawing.Size(563, 219)
+        Me.RE_gbRoomStatus.TabIndex = 8
+        Me.RE_gbRoomStatus.TabStop = False
+        Me.RE_gbRoomStatus.Text = "Room Status"
+        '
+        'RE_gbRoomSettings
+        '
+        Me.RE_gbRoomSettings.Controls.Add(Me.RE_btnResendFirmware)
+        Me.RE_gbRoomSettings.Controls.Add(Me.RE_btnBrowseFirmware)
+        Me.RE_gbRoomSettings.Controls.Add(Me.RE_btnResendProgram)
+        Me.RE_gbRoomSettings.Controls.Add(Me.RE_btnBrowseProgram)
+        Me.RE_gbRoomSettings.Controls.Add(Me.TextBox2)
+        Me.RE_gbRoomSettings.Controls.Add(Me.TextBox1)
+        Me.RE_gbRoomSettings.Controls.Add(Me.RE_lblFirmwareLoaded)
+        Me.RE_gbRoomSettings.Controls.Add(Me.RE_lblProgramLoaded)
+        Me.RE_gbRoomSettings.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RE_gbRoomSettings.Location = New System.Drawing.Point(755, 3)
+        Me.RE_gbRoomSettings.Name = "RE_gbRoomSettings"
+        Me.RE_gbRoomSettings.Size = New System.Drawing.Size(544, 219)
+        Me.RE_gbRoomSettings.TabIndex = 9
+        Me.RE_gbRoomSettings.TabStop = False
+        Me.RE_gbRoomSettings.Text = "Room Settings"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(23, 31)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(66, 13)
+        Me.Label12.TabIndex = 0
+        Me.Label12.Text = "Room State:"
+        '
+        'RE_cbRoomState
+        '
+        Me.RE_cbRoomState.FormattingEnabled = True
+        Me.RE_cbRoomState.Location = New System.Drawing.Point(95, 28)
+        Me.RE_cbRoomState.Name = "RE_cbRoomState"
+        Me.RE_cbRoomState.Size = New System.Drawing.Size(121, 21)
+        Me.RE_cbRoomState.TabIndex = 1
+        '
+        'RE_lblProgramLoaded
+        '
+        Me.RE_lblProgramLoaded.AutoSize = True
+        Me.RE_lblProgramLoaded.Location = New System.Drawing.Point(20, 34)
+        Me.RE_lblProgramLoaded.Name = "RE_lblProgramLoaded"
+        Me.RE_lblProgramLoaded.Size = New System.Drawing.Size(88, 13)
+        Me.RE_lblProgramLoaded.TabIndex = 0
+        Me.RE_lblProgramLoaded.Text = "Program Loaded:"
+        '
+        'RE_lblFirmwareLoaded
+        '
+        Me.RE_lblFirmwareLoaded.AutoSize = True
+        Me.RE_lblFirmwareLoaded.Location = New System.Drawing.Point(17, 60)
+        Me.RE_lblFirmwareLoaded.Name = "RE_lblFirmwareLoaded"
+        Me.RE_lblFirmwareLoaded.Size = New System.Drawing.Size(91, 13)
+        Me.RE_lblFirmwareLoaded.TabIndex = 1
+        Me.RE_lblFirmwareLoaded.Text = "Firmware Loaded:"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(132, 31)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(111, 20)
+        Me.TextBox1.TabIndex = 2
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(132, 57)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(111, 20)
+        Me.TextBox2.TabIndex = 3
+        '
+        'RE_btnBrowseProgram
+        '
+        Me.RE_btnBrowseProgram.Location = New System.Drawing.Point(283, 31)
+        Me.RE_btnBrowseProgram.Name = "RE_btnBrowseProgram"
+        Me.RE_btnBrowseProgram.Size = New System.Drawing.Size(77, 22)
+        Me.RE_btnBrowseProgram.TabIndex = 4
+        Me.RE_btnBrowseProgram.Text = "Browse.."
+        Me.RE_btnBrowseProgram.UseVisualStyleBackColor = True
+        '
+        'RE_btnResendProgram
+        '
+        Me.RE_btnResendProgram.Location = New System.Drawing.Point(381, 31)
+        Me.RE_btnResendProgram.Name = "RE_btnResendProgram"
+        Me.RE_btnResendProgram.Size = New System.Drawing.Size(77, 22)
+        Me.RE_btnResendProgram.TabIndex = 5
+        Me.RE_btnResendProgram.Text = "Resend"
+        Me.RE_btnResendProgram.UseVisualStyleBackColor = True
+        '
+        'RE_btnBrowseFirmware
+        '
+        Me.RE_btnBrowseFirmware.Location = New System.Drawing.Point(283, 55)
+        Me.RE_btnBrowseFirmware.Name = "RE_btnBrowseFirmware"
+        Me.RE_btnBrowseFirmware.Size = New System.Drawing.Size(77, 22)
+        Me.RE_btnBrowseFirmware.TabIndex = 6
+        Me.RE_btnBrowseFirmware.Text = "Browse.."
+        Me.RE_btnBrowseFirmware.UseVisualStyleBackColor = True
+        '
+        'RE_btnResendFirmware
+        '
+        Me.RE_btnResendFirmware.Location = New System.Drawing.Point(381, 55)
+        Me.RE_btnResendFirmware.Name = "RE_btnResendFirmware"
+        Me.RE_btnResendFirmware.Size = New System.Drawing.Size(77, 22)
+        Me.RE_btnResendFirmware.TabIndex = 7
+        Me.RE_btnResendFirmware.Text = "Resend"
+        Me.RE_btnResendFirmware.UseVisualStyleBackColor = True
+        '
+        'RE_rbOccupied
+        '
+        Me.RE_rbOccupied.AutoSize = True
+        Me.RE_rbOccupied.Location = New System.Drawing.Point(46, 83)
+        Me.RE_rbOccupied.Name = "RE_rbOccupied"
+        Me.RE_rbOccupied.Size = New System.Drawing.Size(71, 17)
+        Me.RE_rbOccupied.TabIndex = 2
+        Me.RE_rbOccupied.Text = "Occupied"
+        Me.RE_rbOccupied.UseVisualStyleBackColor = True
+        '
+        'RE_rbUnoccupied
+        '
+        Me.RE_rbUnoccupied.AutoSize = True
+        Me.RE_rbUnoccupied.Checked = True
+        Me.RE_rbUnoccupied.Location = New System.Drawing.Point(130, 83)
+        Me.RE_rbUnoccupied.Name = "RE_rbUnoccupied"
+        Me.RE_rbUnoccupied.Size = New System.Drawing.Size(86, 17)
+        Me.RE_rbUnoccupied.TabIndex = 3
+        Me.RE_rbUnoccupied.TabStop = True
+        Me.RE_rbUnoccupied.Text = "Un-occupied"
+        Me.RE_rbUnoccupied.UseVisualStyleBackColor = True
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(23, 114)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(68, 13)
+        Me.Label13.TabIndex = 4
+        Me.Label13.Text = "Customer ID:"
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(109, 111)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(107, 20)
+        Me.TextBox3.TabIndex = 5
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(397, 113)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(89, 13)
+        Me.Label14.TabIndex = 27
+        Me.Label14.Text = "Error Alarm Code:"
+        '
+        'AE_cbErrorAlarmCode
+        '
+        Me.AE_cbErrorAlarmCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.AE_cbErrorAlarmCode.FormattingEnabled = True
+        Me.AE_cbErrorAlarmCode.Location = New System.Drawing.Point(400, 134)
+        Me.AE_cbErrorAlarmCode.Name = "AE_cbErrorAlarmCode"
+        Me.AE_cbErrorAlarmCode.Size = New System.Drawing.Size(198, 21)
+        Me.AE_cbErrorAlarmCode.TabIndex = 28
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2104,6 +2329,8 @@ Partial Class frmMain
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.tpDeviceType.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
@@ -2114,6 +2341,10 @@ Partial Class frmMain
         Me.AE_gbAlarmType.ResumeLayout(False)
         Me.AE_gbAlarmType.PerformLayout()
         Me.tpvConfigurator.ResumeLayout(False)
+        Me.RE_gbRoomStatus.ResumeLayout(False)
+        Me.RE_gbRoomStatus.PerformLayout()
+        Me.RE_gbRoomSettings.ResumeLayout(False)
+        Me.RE_gbRoomSettings.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2178,8 +2409,7 @@ Partial Class frmMain
     Friend WithEvents RE_tvRoomsByFloor As System.Windows.Forms.TreeView
     Friend WithEvents RE_tbByType As System.Windows.Forms.TabPage
     Friend WithEvents RE_tvRoomsByType As System.Windows.Forms.TreeView
-    Friend WithEvents RE_btnSendProgram As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents RE_btnSave As System.Windows.Forms.Button
     Friend WithEvents RE_btnNew As System.Windows.Forms.Button
     Friend WithEvents RE_btnDelete As System.Windows.Forms.Button
     Friend WithEvents tpRoomType As System.Windows.Forms.TabPage
@@ -2294,5 +2524,26 @@ Partial Class frmMain
     Friend WithEvents SM_nudSetPoint As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents SM_lbStates As System.Windows.Forms.ListBox
+    Friend WithEvents RTE_rbStateDisabled As System.Windows.Forms.RadioButton
+    Friend WithEvents RTE_rbStateEnabled As System.Windows.Forms.RadioButton
+    Friend WithEvents RTE_cbDefaultState As System.Windows.Forms.ComboBox
+    Friend WithEvents RE_gbRoomStatus As System.Windows.Forms.GroupBox
+    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents RE_rbUnoccupied As System.Windows.Forms.RadioButton
+    Friend WithEvents RE_rbOccupied As System.Windows.Forms.RadioButton
+    Friend WithEvents RE_cbRoomState As System.Windows.Forms.ComboBox
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents RE_gbRoomSettings As System.Windows.Forms.GroupBox
+    Friend WithEvents RE_btnResendFirmware As System.Windows.Forms.Button
+    Friend WithEvents RE_btnBrowseFirmware As System.Windows.Forms.Button
+    Friend WithEvents RE_btnResendProgram As System.Windows.Forms.Button
+    Friend WithEvents RE_btnBrowseProgram As System.Windows.Forms.Button
+    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents RE_lblFirmwareLoaded As System.Windows.Forms.Label
+    Friend WithEvents RE_lblProgramLoaded As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents AE_cbErrorAlarmCode As System.Windows.Forms.ComboBox
 
 End Class
