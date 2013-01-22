@@ -3,6 +3,7 @@ Imports System.Data.Sql
 Imports System.Data.SqlClient
 
 Public Class frmExcel_Room_Loader
+
 #Region "Variables"
 
 #Region "SQL Variables"

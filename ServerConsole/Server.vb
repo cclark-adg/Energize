@@ -11,13 +11,15 @@ Module Server
 
     Public SERVER_ADDRESS, USERNAME, PASSWORD As String
     Dim serverSocket As New TcpListener(System.Net.IPAddress.Any, 2012)
-    Private listenThread As Thread
+    Private listenThread, connectionStatus As Thread
     Private clients As New List(Of hndlClient)
 
+    Private test As New List(Of String)
+
     Private Sub init()
-        Dim Notifyicon As New NotifyIcon
-        Notifyicon.Icon = New System.Drawing.Icon("..\..\logo.ico")
-        Notifyicon.Visible = True
+        ' Dim Notifyicon As New NotifyIcon
+        'Notifyicon.Icon = New System.Drawing.Icon("..\..\logo.ico")
+        'Notifyicon.Visible = True
         'Add a context menu with some statistics for the program or something.
 
     End Sub
@@ -29,14 +31,19 @@ Module Server
 
         serverSocket.Start()
         listenThread = New Thread(AddressOf doListen)
+        connectionStatus = New Thread(AddressOf checkConnections)
         message("Now Listening on port 2012.")
-        Console.Write(">>")
+        Console.Write(">> ")
         listenThread.IsBackground = True
         listenThread.Start()
+
+        'connectionStatus.IsBackground = True
+        'connectionStatus.Start()
 
         init()
 
         Do
+            
             Select Case Console.ReadLine().ToLower
                 Case "exit"
                     Console.Write("Shutting Down........")
@@ -45,12 +52,16 @@ Module Server
                     clearHistory()
                 Case "clr"
                     Console.Clear()
-                    Console.Write(">>")
+                    Console.Write(">> ")
                 Case "online"
                     For Each client As hndlClient In clients
                         Console.WriteLine(client.Username.ToString & ": " & client.Check_Client_connection())
                     Next
-                    Console.Write(">>")
+                    Console.Write(">> ")
+                Case "clients"
+                    For Each client In clients
+                        message(client.Username)
+                    Next
                 Case "help"
                     'TODO: Add Help. Or get some.
                     Console.WriteLine("Help:")
@@ -59,13 +70,13 @@ Module Server
                     Console.WriteLine("online : Shows all connected clients.")
                     Console.WriteLine("exit :  Shut Down Listener and Exit")
                     Console.WriteLine("serverconfig : Configure SQL server settings")
-                    Console.Write(">>")
+                    Console.Write(">> ")
                 Case "serverconfig"
                     configureSQLServer()
                 Case Else
                     Console.WriteLine("Command not recognized")
 
-                    Console.Write(">>")
+                    Console.Write(">> ")
             End Select
         Loop
 
@@ -88,8 +99,6 @@ Module Server
                 Console.WriteLine("Not recognized, try again.")
         End Select
 
-
-
     End Sub
     Private Sub doListen()
         Dim incomingClient As TcpClient
@@ -102,6 +111,23 @@ Module Server
             message("Client " + incomingClient.Client.RemoteEndPoint.ToString + " Connected")
         Loop
 
+    End Sub
+
+    Private Sub checkConnections()
+        Do
+            Dim count As Integer = clients.Count
+            Dim toRemove As New List(Of hndlClient)
+            For i = 0 To count - 1 Step 1
+                If Not clients(i).Check_Client_connection Then
+                    toRemove.Add(clients(i))
+                End If
+            Next
+            For Each c In toRemove
+                c.closeSocket()
+                clients.Remove(c)
+            Next
+        Loop
+        
     End Sub
     Private Sub clearHistory()
         Dim sqlCmd As New SqlCommand
@@ -117,7 +143,7 @@ Module Server
 
     Sub message(ByVal msg As String)
         msg.Trim()
-        Console.WriteLine(" >> " + msg)
+        Console.WriteLine(">> " + msg)
     End Sub
 
     Sub messageFromClient(ByVal sender As hndlClient, ByVal msg As String)
@@ -133,7 +159,7 @@ Module Server
         msg(0) = msg(0).Substring(1)
         For Each a As String In msg
             a.Trim(rmv)
-            message(a)
+            message(a.Substring(1))
         Next
         addSQL(msg)
     End Sub
@@ -177,6 +203,15 @@ Module Server
             ctThread.Start()
 
         End Sub
+        Public Sub closeSocket()
+            'this throws an exception, don't want it to.
+            Try
+                ctThread.Abort()
+            Catch ex As Exception
+
+            End Try
+
+        End Sub
 
         Public Property Username() As String
             Get
@@ -188,7 +223,7 @@ Module Server
         End Property
         Private Sub doSndRec()
             Dim run As Boolean = True
-            Dim byteRec(10024) As Byte
+            Dim byteRec(350) As Byte
             Dim byteRead As Integer
             Dim dataRec As String = ""
 
@@ -197,29 +232,32 @@ Module Server
                 Try
                     Dim networkStream As NetworkStream = clientSocket.GetStream()
 
-                    byteRead = clientSocket.GetStream.Read(byteRec, 0, 1024)
+                    byteRead = clientSocket.GetStream.Read(byteRec, 0, 350)
                     If byteRead > 0 Then
 
+                        'Convert the incoming bytes to ASCII
                         dataRec = ASCIIEncoding.ASCII.GetString(byteRec)
-                        Dim trims() As Char = {Chr(2), Chr(3), Chr(32)}
-                        dataRec.Trim(trims)
 
+                        'Use a custom Tolkenizer to seperate out the message based upon the STX and ETX characters
+                        'Dim seperateMessage As List(Of String) = seperateMessages(dataRec)
                         Dim subMessages() As String = dataRec.Split(Chr(3))
 
-                        'Currently for some reason, I'm getting an extra message that is entirely blank after I split/trim the incoming message. I'm not 100% positive as to how to solve this
-                        'effectivly however I'm going to set the maximum number of messages to be read in at 5. THIS IS NOT A PERMANT SOLUTION. However this will work as long as we do not receive more than 
-                        '5 messages at a time from a SINGLE socket. Odds are...I'm going to need to fix this sooner rather than later.
-                        For i = 0 To 4 Step 1
-                            RaiseEvent dataReceived(Me, subMessages(i))
-                            delimtMessage(subMessages(i))
+                        For Each m In subMessages
+                            If m.StartsWith(Chr(2)) Then
+                                RaiseEvent dataReceived(Me, m)
+                                delimtMessage(m)
+                            End If
                         Next
 
-                        'For Each a As String In subMessages
-                        'RaiseEvent dataReceived(Me, a)
-                        'delimtMessage(a)
+                        'Go through the entire list of messages and add them to the database 
+                        'For i = 0 To seperateMessage.Count - 1 Step 1
+                        '    'Raise the "Data Received" Event in order to add messages to the database
+                        '    RaiseEvent dataReceived(Me, seperateMessage(i))
+
+                        '    'Used for debugging purposes to provide easier readability of the incoming message by seperating out the paramters of the message based on the hex 07 BELL delimeter
+                        '    delimtMessage(seperateMessage(i))
+                        '    test.Add(seperateMessage(i))
                         'Next
-                        'RaiseEvent dataReceived(Me, subMessages(0))
-                        'delimtMessage(subMessages(0))
 
                     End If
 
@@ -233,6 +271,37 @@ Module Server
     End Class
 
 #End Region
+
+    'Function to seperate out the messages based on the STX and ETX characters and return a collection of messages
+    Private Function seperateMessages(ByVal message As String)
+        'Instanciate varibales for sorting
+        Dim index As Integer = 0
+        Dim seperatedMessages As New List(Of String)
+
+        'Loop through the entire length of the message
+        For i = 0 To message.Length - 1 Step 1
+            'When we find a STX (Chr(2)) character, realize that it is the start of a message and start looking for the ETX (Chr(3)) character to denote the end of the message
+            If message(i).ToString.Equals(Chr(2)) Then
+                'Create the index and string builder
+                Dim temp As New StringBuilder
+                'Start at the found STX variable + 1 in order to eliminate the STX character itself
+                Dim a As Integer = i + 1
+                'Start searching through the string until the ETX character is found
+                Do Until message(a).ToString.Equals(Chr(3))
+                    'Add characters to the temp string and iterate the loop
+                    temp.Append(message(a).ToString)
+                    a = a + 1
+                Loop
+                'Add the finished temp string to the list of messages and iterate the loop
+                Debug.Print(temp.ToString + vbCrLf)
+
+                seperatedMessages.Add(temp.ToString)
+                i = i + a - 1
+            End If
+        Next
+        'Return the list of seperated messages
+        Return seperatedMessages
+    End Function
 
 #Region "SQL"
 

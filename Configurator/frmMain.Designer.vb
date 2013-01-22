@@ -23,11 +23,26 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("TSTAT_20")
+        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("TSTAT", New System.Windows.Forms.TreeNode() {TreeNode1})
+        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("LG_01")
+        Dim TreeNode4 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("LG_02")
+        Dim TreeNode5 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("LG_03")
+        Dim TreeNode6 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("LG_04")
+        Dim TreeNode7 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("LG_05")
+        Dim TreeNode8 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("LG_06")
+        Dim TreeNode9 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("LG_07")
+        Dim TreeNode10 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("LG_08")
+        Dim TreeNode11 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("LG_08")
+        Dim TreeNode12 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("LG", New System.Windows.Forms.TreeNode() {TreeNode3, TreeNode4, TreeNode5, TreeNode6, TreeNode7, TreeNode8, TreeNode9, TreeNode10, TreeNode11})
+        Dim TreeNode13 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("TV_01")
+        Dim TreeNode14 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("TV", New System.Windows.Forms.TreeNode() {TreeNode13})
+        Dim TreeNode15 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("SHADES")
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.tvMenuStrip = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.tsmiAddItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiDeleteItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RE_cmsTV = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.RTE_cmsTV = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.LoadProgramsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadDefaultProgramByRoomTypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadOtherProgramToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -220,8 +235,13 @@ Partial Class frmMain
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.AE_cbErrorAlarmCode = New System.Windows.Forms.ComboBox()
+        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
+        Me.RE_tvDevices = New System.Windows.Forms.TreeView()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.RE_cmsTVDevices = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ReplaceDeviceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tvMenuStrip.SuspendLayout()
-        Me.RE_cmsTV.SuspendLayout()
+        Me.RTE_cmsTV.SuspendLayout()
         Me.mainStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.tpStateManager.SuspendLayout()
@@ -266,6 +286,8 @@ Partial Class frmMain
         Me.tpvConfigurator.SuspendLayout()
         Me.RE_gbRoomStatus.SuspendLayout()
         Me.RE_gbRoomSettings.SuspendLayout()
+        Me.GroupBox8.SuspendLayout()
+        Me.RE_cmsTVDevices.SuspendLayout()
         Me.SuspendLayout()
         '
         'tvMenuStrip
@@ -286,11 +308,11 @@ Partial Class frmMain
         Me.tsmiDeleteItem.Size = New System.Drawing.Size(134, 22)
         Me.tsmiDeleteItem.Text = "Delete Item"
         '
-        'RE_cmsTV
+        'RTE_cmsTV
         '
-        Me.RE_cmsTV.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadProgramsToolStripMenuItem, Me.RemotesToolStripMenuItem})
-        Me.RE_cmsTV.Name = "RE_cmsTV"
-        Me.RE_cmsTV.Size = New System.Drawing.Size(163, 48)
+        Me.RTE_cmsTV.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadProgramsToolStripMenuItem, Me.RemotesToolStripMenuItem})
+        Me.RTE_cmsTV.Name = "RE_cmsTV"
+        Me.RTE_cmsTV.Size = New System.Drawing.Size(163, 70)
         '
         'LoadProgramsToolStripMenuItem
         '
@@ -1233,6 +1255,7 @@ Partial Class frmMain
         Me.TableLayoutPanel2.Controls.Add(Me.RE_gbRoomStatus, 2, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.RE_gbRoomSettings, 3, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.RE_btnSave, 3, 3)
+        Me.TableLayoutPanel2.Controls.Add(Me.GroupBox8, 3, 1)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
@@ -1407,7 +1430,7 @@ Partial Class frmMain
         '
         'RE_tvRoomsByFloor
         '
-        Me.RE_tvRoomsByFloor.ContextMenuStrip = Me.RE_cmsTV
+        Me.RE_tvRoomsByFloor.ContextMenuStrip = Me.RTE_cmsTV
         Me.RE_tvRoomsByFloor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.RE_tvRoomsByFloor.Location = New System.Drawing.Point(3, 3)
         Me.RE_tvRoomsByFloor.Name = "RE_tvRoomsByFloor"
@@ -1427,7 +1450,7 @@ Partial Class frmMain
         '
         'RE_tvRoomsByType
         '
-        Me.RE_tvRoomsByType.ContextMenuStrip = Me.RE_cmsTV
+        Me.RE_tvRoomsByType.ContextMenuStrip = Me.RTE_cmsTV
         Me.RE_tvRoomsByType.Dock = System.Windows.Forms.DockStyle.Fill
         Me.RE_tvRoomsByType.Location = New System.Drawing.Point(3, 3)
         Me.RE_tvRoomsByType.Name = "RE_tvRoomsByType"
@@ -2263,6 +2286,79 @@ Partial Class frmMain
         Me.AE_cbErrorAlarmCode.Size = New System.Drawing.Size(198, 21)
         Me.AE_cbErrorAlarmCode.TabIndex = 28
         '
+        'GroupBox8
+        '
+        Me.GroupBox8.Controls.Add(Me.Label15)
+        Me.GroupBox8.Controls.Add(Me.RE_tvDevices)
+        Me.GroupBox8.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox8.Location = New System.Drawing.Point(755, 228)
+        Me.GroupBox8.Name = "GroupBox8"
+        Me.TableLayoutPanel2.SetRowSpan(Me.GroupBox8, 2)
+        Me.GroupBox8.Size = New System.Drawing.Size(544, 347)
+        Me.GroupBox8.TabIndex = 10
+        Me.GroupBox8.TabStop = False
+        Me.GroupBox8.Text = "Devices"
+        '
+        'RE_tvDevices
+        '
+        Me.RE_tvDevices.ContextMenuStrip = Me.RE_cmsTVDevices
+        Me.RE_tvDevices.Location = New System.Drawing.Point(6, 43)
+        Me.RE_tvDevices.Name = "RE_tvDevices"
+        TreeNode1.Name = "Node4"
+        TreeNode1.Text = "TSTAT_20"
+        TreeNode2.Name = "Node0"
+        TreeNode2.Text = "TSTAT"
+        TreeNode3.Name = "Node5"
+        TreeNode3.Text = "LG_01"
+        TreeNode4.Name = "Node6"
+        TreeNode4.Text = "LG_02"
+        TreeNode5.Name = "Node7"
+        TreeNode5.Text = "LG_03"
+        TreeNode6.Name = "Node8"
+        TreeNode6.Text = "LG_04"
+        TreeNode7.Name = "Node9"
+        TreeNode7.Text = "LG_05"
+        TreeNode8.Name = "Node10"
+        TreeNode8.Text = "LG_06"
+        TreeNode9.Name = "Node11"
+        TreeNode9.Text = "LG_07"
+        TreeNode10.Name = "Node12"
+        TreeNode10.Text = "LG_08"
+        TreeNode11.Name = "Node13"
+        TreeNode11.Text = "LG_08"
+        TreeNode12.Name = "Node1"
+        TreeNode12.Text = "LG"
+        TreeNode13.Name = "Node14"
+        TreeNode13.Text = "TV_01"
+        TreeNode14.Name = "Node2"
+        TreeNode14.Text = "TV"
+        TreeNode15.Name = "Node3"
+        TreeNode15.Text = "SHADES"
+        Me.RE_tvDevices.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode2, TreeNode12, TreeNode14, TreeNode15})
+        Me.RE_tvDevices.Size = New System.Drawing.Size(177, 298)
+        Me.RE_tvDevices.TabIndex = 0
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(6, 27)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(46, 13)
+        Me.Label15.TabIndex = 1
+        Me.Label15.Text = "Devices"
+        '
+        'RE_cmsTVDevices
+        '
+        Me.RE_cmsTVDevices.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReplaceDeviceToolStripMenuItem})
+        Me.RE_cmsTVDevices.Name = "RE_cmsTVDevices"
+        Me.RE_cmsTVDevices.Size = New System.Drawing.Size(154, 26)
+        '
+        'ReplaceDeviceToolStripMenuItem
+        '
+        Me.ReplaceDeviceToolStripMenuItem.Name = "ReplaceDeviceToolStripMenuItem"
+        Me.ReplaceDeviceToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
+        Me.ReplaceDeviceToolStripMenuItem.Text = "Replace Device"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2276,7 +2372,7 @@ Partial Class frmMain
         Me.Name = "frmMain"
         Me.Text = "Configurator"
         Me.tvMenuStrip.ResumeLayout(False)
-        Me.RE_cmsTV.ResumeLayout(False)
+        Me.RTE_cmsTV.ResumeLayout(False)
         Me.mainStrip.ResumeLayout(False)
         Me.mainStrip.PerformLayout()
         Me.StatusStrip.ResumeLayout(False)
@@ -2345,6 +2441,9 @@ Partial Class frmMain
         Me.RE_gbRoomStatus.PerformLayout()
         Me.RE_gbRoomSettings.ResumeLayout(False)
         Me.RE_gbRoomSettings.PerformLayout()
+        Me.GroupBox8.ResumeLayout(False)
+        Me.GroupBox8.PerformLayout()
+        Me.RE_cmsTVDevices.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2358,7 +2457,7 @@ Partial Class frmMain
     Friend WithEvents tsmiDeleteItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StatusStrip As System.Windows.Forms.StatusStrip
     Friend WithEvents tssLbl_Status As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents RE_cmsTV As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents RTE_cmsTV As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents LoadProgramsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LoadDefaultProgramByRoomTypeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LoadOtherProgramToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -2545,5 +2644,10 @@ Partial Class frmMain
     Friend WithEvents RE_lblProgramLoaded As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents AE_cbErrorAlarmCode As System.Windows.Forms.ComboBox
+    Friend WithEvents GroupBox8 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents RE_tvDevices As System.Windows.Forms.TreeView
+    Friend WithEvents RE_cmsTVDevices As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents ReplaceDeviceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
