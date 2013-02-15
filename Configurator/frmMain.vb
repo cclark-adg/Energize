@@ -1366,6 +1366,33 @@ Public Class frmMain
     End Sub
 #End Region
 
+#Region "Modes"
+    Private Sub BasicMode()
+        tpvConfigurator.TabPages(0).Enabled = False
+        RTE_gbDefaultState.Enabled = False
+        RTE_gbDevices.Enabled = False
+        RTE_gbProgramInfo.Enabled = False
+        RE_gbDevices.Enabled = False
+        RE_gbRoomStatus.Enabled = False
+        RE_gbRoomSettings.Enabled = False
+        tpvConfigurator.TabPages(3).Enabled = False
+        tpvConfigurator.TabPages(4).Enabled = False
+    End Sub
+
+    Private Sub EnhancedMode()
+        tpvConfigurator.TabPages(0).Enabled = True
+        RTE_gbDefaultState.Enabled = True
+        RTE_gbDevices.Enabled = True
+        RTE_gbProgramInfo.Enabled = True
+        RE_gbDevices.Enabled = True
+        RE_gbRoomStatus.Enabled = True
+        RE_gbRoomSettings.Enabled = True
+        tpvConfigurator.TabPages(3).Enabled = True
+        tpvConfigurator.TabPages(4).Enabled = True
+    End Sub
+
+#End Region
+
 #Region "Main Form Event Methods"
     Private Sub ExitToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ExitToolStripMenuItem.Click
         Application.Exit()
@@ -1406,6 +1433,8 @@ Public Class frmMain
         SERVER_ADDRESS = "ADGATL-PC"
         USERNAME = "Test"
         PASSWORD = "adg10990"
+
+
         'sqlCmd.Connection = connectToDatabase()
 
         'Not sure if this is a good idea. Couldn't find another way to avoid.
@@ -1449,8 +1478,6 @@ Public Class frmMain
 
 #End Region
 
-
-
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs)
         Dim eor As String = ""
         For Each s As VptSession In sessions
@@ -1461,4 +1488,11 @@ Public Class frmMain
 
     
    
+    Private Sub ReplaceDeviceToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ReplaceDeviceToolStripMenuItem.Click
+        MessageBox.Show("Processor is in aquire mode. Press Ok when finished to asign ID")
+    End Sub
+
+    Private Sub BasicModeToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles BasicModeToolStripMenuItem.Click
+        BasicMode()
+    End Sub
 End Class

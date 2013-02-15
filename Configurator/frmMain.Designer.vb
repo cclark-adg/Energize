@@ -138,9 +138,7 @@ Partial Class frmMain
         Me.EE_tbAlarmCode = New System.Windows.Forms.TextBox()
         Me.tpRoomEditor = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
-        Me.gbRoomDetails = New System.Windows.Forms.GroupBox()
-        Me.RE_tbSTBip = New System.Windows.Forms.TextBox()
-        Me.RE_lblSTBAddress = New System.Windows.Forms.Label()
+        Me.RE_gbRoomDetails = New System.Windows.Forms.GroupBox()
         Me.RE_tbFloor = New System.Windows.Forms.TextBox()
         Me.RE_lblFloor = New System.Windows.Forms.Label()
         Me.RE_tbMAC = New System.Windows.Forms.TextBox()
@@ -158,16 +156,37 @@ Partial Class frmMain
         Me.RE_tvRoomsByFloor = New System.Windows.Forms.TreeView()
         Me.RE_tbByType = New System.Windows.Forms.TabPage()
         Me.RE_tvRoomsByType = New System.Windows.Forms.TreeView()
-        Me.RE_btnSave = New System.Windows.Forms.Button()
         Me.RE_btnNew = New System.Windows.Forms.Button()
         Me.RE_btnDelete = New System.Windows.Forms.Button()
+        Me.RE_gbRoomStatus = New System.Windows.Forms.GroupBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.RE_rbUnoccupied = New System.Windows.Forms.RadioButton()
+        Me.RE_rbOccupied = New System.Windows.Forms.RadioButton()
+        Me.RE_cbRoomState = New System.Windows.Forms.ComboBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.RE_gbRoomSettings = New System.Windows.Forms.GroupBox()
+        Me.RE_btnResendFirmware = New System.Windows.Forms.Button()
+        Me.RE_btnBrowseFirmware = New System.Windows.Forms.Button()
+        Me.RE_btnResendProgram = New System.Windows.Forms.Button()
+        Me.RE_btnBrowseProgram = New System.Windows.Forms.Button()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.RE_lblFirmwareLoaded = New System.Windows.Forms.Label()
+        Me.RE_lblProgramLoaded = New System.Windows.Forms.Label()
+        Me.RE_btnSave = New System.Windows.Forms.Button()
+        Me.RE_gbDevices = New System.Windows.Forms.GroupBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.RE_tvDevices = New System.Windows.Forms.TreeView()
+        Me.RE_cmsTVDevices = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ReplaceDeviceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tpRoomType = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.RTE_gbProgramInfo = New System.Windows.Forms.GroupBox()
         Me.RTE_btnBrowseProgram = New System.Windows.Forms.Button()
         Me.RTE_tbProgramName = New System.Windows.Forms.TextBox()
         Me.RTE_lblDefaultProgram = New System.Windows.Forms.Label()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.RTE_gbDevices = New System.Windows.Forms.GroupBox()
         Me.RTE_lbDeviceTypesAvailable = New System.Windows.Forms.ListBox()
         Me.RTE_tvDevicesAdded = New System.Windows.Forms.TreeView()
         Me.RTE_btnAllDeviceAdd = New System.Windows.Forms.Button()
@@ -182,7 +201,7 @@ Partial Class frmMain
         Me.RTE_btnDelete = New System.Windows.Forms.Button()
         Me.RTE_btnSave = New System.Windows.Forms.Button()
         Me.RTE_btnClear = New System.Windows.Forms.Button()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.RTE_gbDefaultState = New System.Windows.Forms.GroupBox()
         Me.RTE_rbStateDisabled = New System.Windows.Forms.RadioButton()
         Me.RTE_rbStateEnabled = New System.Windows.Forms.RadioButton()
         Me.RTE_cbDefaultState = New System.Windows.Forms.ComboBox()
@@ -197,6 +216,8 @@ Partial Class frmMain
         Me.AE_lblName = New System.Windows.Forms.Label()
         Me.AE_lbDeviceName = New System.Windows.Forms.Label()
         Me.gbAlarmSettings = New System.Windows.Forms.GroupBox()
+        Me.AE_cbErrorAlarmCode = New System.Windows.Forms.ComboBox()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.AE_combWarningAlarms = New System.Windows.Forms.ComboBox()
         Me.AE_lblWarningCode = New System.Windows.Forms.Label()
         Me.AE_tbWarningTimeFrame = New System.Windows.Forms.TextBox()
@@ -217,29 +238,9 @@ Partial Class frmMain
         Me.AE_tbTimeFrame = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.tpvConfigurator = New System.Windows.Forms.TabControl()
-        Me.RE_gbRoomStatus = New System.Windows.Forms.GroupBox()
-        Me.RE_gbRoomSettings = New System.Windows.Forms.GroupBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.RE_cbRoomState = New System.Windows.Forms.ComboBox()
-        Me.RE_lblProgramLoaded = New System.Windows.Forms.Label()
-        Me.RE_lblFirmwareLoaded = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.RE_btnBrowseProgram = New System.Windows.Forms.Button()
-        Me.RE_btnResendProgram = New System.Windows.Forms.Button()
-        Me.RE_btnBrowseFirmware = New System.Windows.Forms.Button()
-        Me.RE_btnResendFirmware = New System.Windows.Forms.Button()
-        Me.RE_rbOccupied = New System.Windows.Forms.RadioButton()
-        Me.RE_rbUnoccupied = New System.Windows.Forms.RadioButton()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.AE_cbErrorAlarmCode = New System.Windows.Forms.ComboBox()
-        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
-        Me.RE_tvDevices = New System.Windows.Forms.TreeView()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.RE_cmsTVDevices = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ReplaceDeviceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AdminToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BasicModeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FullVersionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tvMenuStrip.SuspendLayout()
         Me.RTE_cmsTV.SuspendLayout()
         Me.mainStrip.SuspendLayout()
@@ -269,25 +270,25 @@ Partial Class frmMain
         Me.tlpEventEditor.SuspendLayout()
         Me.tpRoomEditor.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
-        Me.gbRoomDetails.SuspendLayout()
+        Me.RE_gbRoomDetails.SuspendLayout()
         Me.RE_tcRoomViewer.SuspendLayout()
         Me.RE_tbByFloor.SuspendLayout()
         Me.RE_tbByType.SuspendLayout()
+        Me.RE_gbRoomStatus.SuspendLayout()
+        Me.RE_gbRoomSettings.SuspendLayout()
+        Me.RE_gbDevices.SuspendLayout()
+        Me.RE_cmsTVDevices.SuspendLayout()
         Me.tpRoomType.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
+        Me.RTE_gbProgramInfo.SuspendLayout()
+        Me.RTE_gbDevices.SuspendLayout()
+        Me.RTE_gbDefaultState.SuspendLayout()
         Me.tpDeviceType.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.gbAlarmSettings.SuspendLayout()
         Me.AE_gbSignalType.SuspendLayout()
         Me.AE_gbAlarmType.SuspendLayout()
         Me.tpvConfigurator.SuspendLayout()
-        Me.RE_gbRoomStatus.SuspendLayout()
-        Me.RE_gbRoomSettings.SuspendLayout()
-        Me.GroupBox8.SuspendLayout()
-        Me.RE_cmsTVDevices.SuspendLayout()
         Me.SuspendLayout()
         '
         'tvMenuStrip
@@ -312,7 +313,7 @@ Partial Class frmMain
         '
         Me.RTE_cmsTV.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadProgramsToolStripMenuItem, Me.RemotesToolStripMenuItem})
         Me.RTE_cmsTV.Name = "RE_cmsTV"
-        Me.RTE_cmsTV.Size = New System.Drawing.Size(163, 70)
+        Me.RTE_cmsTV.Size = New System.Drawing.Size(163, 48)
         '
         'LoadProgramsToolStripMenuItem
         '
@@ -354,7 +355,7 @@ Partial Class frmMain
         '
         'mainStrip
         '
-        Me.mainStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem})
+        Me.mainStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.AdminToolStripMenuItem})
         Me.mainStrip.Location = New System.Drawing.Point(0, 0)
         Me.mainStrip.Name = "mainStrip"
         Me.mainStrip.Size = New System.Drawing.Size(1350, 24)
@@ -1248,14 +1249,14 @@ Partial Class frmMain
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel2.Controls.Add(Me.gbRoomDetails, 2, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.RE_gbRoomDetails, 2, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.RE_tcRoomViewer, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.RE_btnNew, 0, 4)
         Me.TableLayoutPanel2.Controls.Add(Me.RE_btnDelete, 1, 4)
         Me.TableLayoutPanel2.Controls.Add(Me.RE_gbRoomStatus, 2, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.RE_gbRoomSettings, 3, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.RE_btnSave, 3, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.GroupBox8, 3, 1)
+        Me.TableLayoutPanel2.Controls.Add(Me.RE_gbDevices, 3, 1)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
@@ -1269,45 +1270,27 @@ Partial Class frmMain
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(1302, 636)
         Me.TableLayoutPanel2.TabIndex = 1
         '
-        'gbRoomDetails
+        'RE_gbRoomDetails
         '
-        Me.gbRoomDetails.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.gbRoomDetails.Controls.Add(Me.RE_tbSTBip)
-        Me.gbRoomDetails.Controls.Add(Me.RE_lblSTBAddress)
-        Me.gbRoomDetails.Controls.Add(Me.RE_tbFloor)
-        Me.gbRoomDetails.Controls.Add(Me.RE_lblFloor)
-        Me.gbRoomDetails.Controls.Add(Me.RE_tbMAC)
-        Me.gbRoomDetails.Controls.Add(Me.RE_lblMAC)
-        Me.gbRoomDetails.Controls.Add(Me.RE_tbIpAddress)
-        Me.gbRoomDetails.Controls.Add(Me.RE_lblIpAddress)
-        Me.gbRoomDetails.Controls.Add(Me.RE_tbBuilding)
-        Me.gbRoomDetails.Controls.Add(Me.RE_lblBuilding)
-        Me.gbRoomDetails.Controls.Add(Me.RE_tbRoomType)
-        Me.gbRoomDetails.Controls.Add(Me.RE_lblRoomType)
-        Me.gbRoomDetails.Controls.Add(Me.RE_tbRoomName)
-        Me.gbRoomDetails.Controls.Add(Me.RE_lblRoomName)
-        Me.gbRoomDetails.Location = New System.Drawing.Point(195, 3)
-        Me.gbRoomDetails.Name = "gbRoomDetails"
-        Me.gbRoomDetails.Size = New System.Drawing.Size(544, 219)
-        Me.gbRoomDetails.TabIndex = 2
-        Me.gbRoomDetails.TabStop = False
-        Me.gbRoomDetails.Text = "Room Details"
-        '
-        'RE_tbSTBip
-        '
-        Me.RE_tbSTBip.Location = New System.Drawing.Point(380, 83)
-        Me.RE_tbSTBip.Name = "RE_tbSTBip"
-        Me.RE_tbSTBip.Size = New System.Drawing.Size(100, 20)
-        Me.RE_tbSTBip.TabIndex = 13
-        '
-        'RE_lblSTBAddress
-        '
-        Me.RE_lblSTBAddress.AutoSize = True
-        Me.RE_lblSTBAddress.Location = New System.Drawing.Point(292, 86)
-        Me.RE_lblSTBAddress.Name = "RE_lblSTBAddress"
-        Me.RE_lblSTBAddress.Size = New System.Drawing.Size(82, 13)
-        Me.RE_lblSTBAddress.TabIndex = 12
-        Me.RE_lblSTBAddress.Text = "Set Top Box IP:"
+        Me.RE_gbRoomDetails.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.RE_gbRoomDetails.Controls.Add(Me.RE_tbFloor)
+        Me.RE_gbRoomDetails.Controls.Add(Me.RE_lblFloor)
+        Me.RE_gbRoomDetails.Controls.Add(Me.RE_tbMAC)
+        Me.RE_gbRoomDetails.Controls.Add(Me.RE_lblMAC)
+        Me.RE_gbRoomDetails.Controls.Add(Me.RE_tbIpAddress)
+        Me.RE_gbRoomDetails.Controls.Add(Me.RE_lblIpAddress)
+        Me.RE_gbRoomDetails.Controls.Add(Me.RE_tbBuilding)
+        Me.RE_gbRoomDetails.Controls.Add(Me.RE_lblBuilding)
+        Me.RE_gbRoomDetails.Controls.Add(Me.RE_tbRoomType)
+        Me.RE_gbRoomDetails.Controls.Add(Me.RE_lblRoomType)
+        Me.RE_gbRoomDetails.Controls.Add(Me.RE_tbRoomName)
+        Me.RE_gbRoomDetails.Controls.Add(Me.RE_lblRoomName)
+        Me.RE_gbRoomDetails.Location = New System.Drawing.Point(195, 3)
+        Me.RE_gbRoomDetails.Name = "RE_gbRoomDetails"
+        Me.RE_gbRoomDetails.Size = New System.Drawing.Size(544, 219)
+        Me.RE_gbRoomDetails.TabIndex = 2
+        Me.RE_gbRoomDetails.TabStop = False
+        Me.RE_gbRoomDetails.Text = "Room Details"
         '
         'RE_tbFloor
         '
@@ -1457,15 +1440,6 @@ Partial Class frmMain
         Me.RE_tvRoomsByType.Size = New System.Drawing.Size(163, 569)
         Me.RE_tvRoomsByType.TabIndex = 6
         '
-        'RE_btnSave
-        '
-        Me.RE_btnSave.Location = New System.Drawing.Point(755, 581)
-        Me.RE_btnSave.Name = "RE_btnSave"
-        Me.RE_btnSave.Size = New System.Drawing.Size(69, 23)
-        Me.RE_btnSave.TabIndex = 3
-        Me.RE_btnSave.Text = "Save"
-        Me.RE_btnSave.UseVisualStyleBackColor = True
-        '
         'RE_btnNew
         '
         Me.RE_btnNew.Location = New System.Drawing.Point(3, 610)
@@ -1483,6 +1457,245 @@ Partial Class frmMain
         Me.RE_btnDelete.TabIndex = 7
         Me.RE_btnDelete.Text = "Delete"
         Me.RE_btnDelete.UseVisualStyleBackColor = True
+        '
+        'RE_gbRoomStatus
+        '
+        Me.RE_gbRoomStatus.Controls.Add(Me.TextBox3)
+        Me.RE_gbRoomStatus.Controls.Add(Me.Label13)
+        Me.RE_gbRoomStatus.Controls.Add(Me.RE_rbUnoccupied)
+        Me.RE_gbRoomStatus.Controls.Add(Me.RE_rbOccupied)
+        Me.RE_gbRoomStatus.Controls.Add(Me.RE_cbRoomState)
+        Me.RE_gbRoomStatus.Controls.Add(Me.Label12)
+        Me.RE_gbRoomStatus.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RE_gbRoomStatus.Location = New System.Drawing.Point(186, 228)
+        Me.RE_gbRoomStatus.Name = "RE_gbRoomStatus"
+        Me.RE_gbRoomStatus.Size = New System.Drawing.Size(563, 219)
+        Me.RE_gbRoomStatus.TabIndex = 8
+        Me.RE_gbRoomStatus.TabStop = False
+        Me.RE_gbRoomStatus.Text = "Room Status"
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(109, 111)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(107, 20)
+        Me.TextBox3.TabIndex = 5
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(23, 114)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(68, 13)
+        Me.Label13.TabIndex = 4
+        Me.Label13.Text = "Customer ID:"
+        '
+        'RE_rbUnoccupied
+        '
+        Me.RE_rbUnoccupied.AutoSize = True
+        Me.RE_rbUnoccupied.Checked = True
+        Me.RE_rbUnoccupied.Location = New System.Drawing.Point(130, 83)
+        Me.RE_rbUnoccupied.Name = "RE_rbUnoccupied"
+        Me.RE_rbUnoccupied.Size = New System.Drawing.Size(86, 17)
+        Me.RE_rbUnoccupied.TabIndex = 3
+        Me.RE_rbUnoccupied.TabStop = True
+        Me.RE_rbUnoccupied.Text = "Un-occupied"
+        Me.RE_rbUnoccupied.UseVisualStyleBackColor = True
+        '
+        'RE_rbOccupied
+        '
+        Me.RE_rbOccupied.AutoSize = True
+        Me.RE_rbOccupied.Location = New System.Drawing.Point(46, 83)
+        Me.RE_rbOccupied.Name = "RE_rbOccupied"
+        Me.RE_rbOccupied.Size = New System.Drawing.Size(71, 17)
+        Me.RE_rbOccupied.TabIndex = 2
+        Me.RE_rbOccupied.Text = "Occupied"
+        Me.RE_rbOccupied.UseVisualStyleBackColor = True
+        '
+        'RE_cbRoomState
+        '
+        Me.RE_cbRoomState.FormattingEnabled = True
+        Me.RE_cbRoomState.Location = New System.Drawing.Point(95, 28)
+        Me.RE_cbRoomState.Name = "RE_cbRoomState"
+        Me.RE_cbRoomState.Size = New System.Drawing.Size(121, 21)
+        Me.RE_cbRoomState.TabIndex = 1
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(23, 31)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(66, 13)
+        Me.Label12.TabIndex = 0
+        Me.Label12.Text = "Room State:"
+        '
+        'RE_gbRoomSettings
+        '
+        Me.RE_gbRoomSettings.Controls.Add(Me.RE_btnResendFirmware)
+        Me.RE_gbRoomSettings.Controls.Add(Me.RE_btnBrowseFirmware)
+        Me.RE_gbRoomSettings.Controls.Add(Me.RE_btnResendProgram)
+        Me.RE_gbRoomSettings.Controls.Add(Me.RE_btnBrowseProgram)
+        Me.RE_gbRoomSettings.Controls.Add(Me.TextBox2)
+        Me.RE_gbRoomSettings.Controls.Add(Me.TextBox1)
+        Me.RE_gbRoomSettings.Controls.Add(Me.RE_lblFirmwareLoaded)
+        Me.RE_gbRoomSettings.Controls.Add(Me.RE_lblProgramLoaded)
+        Me.RE_gbRoomSettings.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RE_gbRoomSettings.Location = New System.Drawing.Point(755, 3)
+        Me.RE_gbRoomSettings.Name = "RE_gbRoomSettings"
+        Me.RE_gbRoomSettings.Size = New System.Drawing.Size(544, 219)
+        Me.RE_gbRoomSettings.TabIndex = 9
+        Me.RE_gbRoomSettings.TabStop = False
+        Me.RE_gbRoomSettings.Text = "Room Settings"
+        '
+        'RE_btnResendFirmware
+        '
+        Me.RE_btnResendFirmware.Location = New System.Drawing.Point(381, 55)
+        Me.RE_btnResendFirmware.Name = "RE_btnResendFirmware"
+        Me.RE_btnResendFirmware.Size = New System.Drawing.Size(77, 22)
+        Me.RE_btnResendFirmware.TabIndex = 7
+        Me.RE_btnResendFirmware.Text = "Resend"
+        Me.RE_btnResendFirmware.UseVisualStyleBackColor = True
+        '
+        'RE_btnBrowseFirmware
+        '
+        Me.RE_btnBrowseFirmware.Location = New System.Drawing.Point(283, 55)
+        Me.RE_btnBrowseFirmware.Name = "RE_btnBrowseFirmware"
+        Me.RE_btnBrowseFirmware.Size = New System.Drawing.Size(77, 22)
+        Me.RE_btnBrowseFirmware.TabIndex = 6
+        Me.RE_btnBrowseFirmware.Text = "Browse.."
+        Me.RE_btnBrowseFirmware.UseVisualStyleBackColor = True
+        '
+        'RE_btnResendProgram
+        '
+        Me.RE_btnResendProgram.Location = New System.Drawing.Point(381, 31)
+        Me.RE_btnResendProgram.Name = "RE_btnResendProgram"
+        Me.RE_btnResendProgram.Size = New System.Drawing.Size(77, 22)
+        Me.RE_btnResendProgram.TabIndex = 5
+        Me.RE_btnResendProgram.Text = "Resend"
+        Me.RE_btnResendProgram.UseVisualStyleBackColor = True
+        '
+        'RE_btnBrowseProgram
+        '
+        Me.RE_btnBrowseProgram.Location = New System.Drawing.Point(283, 31)
+        Me.RE_btnBrowseProgram.Name = "RE_btnBrowseProgram"
+        Me.RE_btnBrowseProgram.Size = New System.Drawing.Size(77, 22)
+        Me.RE_btnBrowseProgram.TabIndex = 4
+        Me.RE_btnBrowseProgram.Text = "Browse.."
+        Me.RE_btnBrowseProgram.UseVisualStyleBackColor = True
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(132, 57)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(111, 20)
+        Me.TextBox2.TabIndex = 3
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(132, 31)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(111, 20)
+        Me.TextBox1.TabIndex = 2
+        '
+        'RE_lblFirmwareLoaded
+        '
+        Me.RE_lblFirmwareLoaded.AutoSize = True
+        Me.RE_lblFirmwareLoaded.Location = New System.Drawing.Point(17, 60)
+        Me.RE_lblFirmwareLoaded.Name = "RE_lblFirmwareLoaded"
+        Me.RE_lblFirmwareLoaded.Size = New System.Drawing.Size(91, 13)
+        Me.RE_lblFirmwareLoaded.TabIndex = 1
+        Me.RE_lblFirmwareLoaded.Text = "Firmware Loaded:"
+        '
+        'RE_lblProgramLoaded
+        '
+        Me.RE_lblProgramLoaded.AutoSize = True
+        Me.RE_lblProgramLoaded.Location = New System.Drawing.Point(20, 34)
+        Me.RE_lblProgramLoaded.Name = "RE_lblProgramLoaded"
+        Me.RE_lblProgramLoaded.Size = New System.Drawing.Size(88, 13)
+        Me.RE_lblProgramLoaded.TabIndex = 0
+        Me.RE_lblProgramLoaded.Text = "Program Loaded:"
+        '
+        'RE_btnSave
+        '
+        Me.RE_btnSave.Location = New System.Drawing.Point(755, 581)
+        Me.RE_btnSave.Name = "RE_btnSave"
+        Me.RE_btnSave.Size = New System.Drawing.Size(69, 23)
+        Me.RE_btnSave.TabIndex = 3
+        Me.RE_btnSave.Text = "Save"
+        Me.RE_btnSave.UseVisualStyleBackColor = True
+        '
+        'RE_gbDevices
+        '
+        Me.RE_gbDevices.Controls.Add(Me.Label15)
+        Me.RE_gbDevices.Controls.Add(Me.RE_tvDevices)
+        Me.RE_gbDevices.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RE_gbDevices.Location = New System.Drawing.Point(755, 228)
+        Me.RE_gbDevices.Name = "RE_gbDevices"
+        Me.TableLayoutPanel2.SetRowSpan(Me.RE_gbDevices, 2)
+        Me.RE_gbDevices.Size = New System.Drawing.Size(544, 347)
+        Me.RE_gbDevices.TabIndex = 10
+        Me.RE_gbDevices.TabStop = False
+        Me.RE_gbDevices.Text = "Devices"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(6, 27)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(46, 13)
+        Me.Label15.TabIndex = 1
+        Me.Label15.Text = "Devices"
+        '
+        'RE_tvDevices
+        '
+        Me.RE_tvDevices.ContextMenuStrip = Me.RE_cmsTVDevices
+        Me.RE_tvDevices.Location = New System.Drawing.Point(6, 43)
+        Me.RE_tvDevices.Name = "RE_tvDevices"
+        TreeNode1.Name = "Node4"
+        TreeNode1.Text = "TSTAT_20"
+        TreeNode2.Name = "Node0"
+        TreeNode2.Text = "TSTAT"
+        TreeNode3.Name = "Node5"
+        TreeNode3.Text = "LG_01"
+        TreeNode4.Name = "Node6"
+        TreeNode4.Text = "LG_02"
+        TreeNode5.Name = "Node7"
+        TreeNode5.Text = "LG_03"
+        TreeNode6.Name = "Node8"
+        TreeNode6.Text = "LG_04"
+        TreeNode7.Name = "Node9"
+        TreeNode7.Text = "LG_05"
+        TreeNode8.Name = "Node10"
+        TreeNode8.Text = "LG_06"
+        TreeNode9.Name = "Node11"
+        TreeNode9.Text = "LG_07"
+        TreeNode10.Name = "Node12"
+        TreeNode10.Text = "LG_08"
+        TreeNode11.Name = "Node13"
+        TreeNode11.Text = "LG_08"
+        TreeNode12.Name = "Node1"
+        TreeNode12.Text = "LG"
+        TreeNode13.Name = "Node14"
+        TreeNode13.Text = "TV_01"
+        TreeNode14.Name = "Node2"
+        TreeNode14.Text = "TV"
+        TreeNode15.Name = "Node3"
+        TreeNode15.Text = "SHADES"
+        Me.RE_tvDevices.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode2, TreeNode12, TreeNode14, TreeNode15})
+        Me.RE_tvDevices.Size = New System.Drawing.Size(177, 298)
+        Me.RE_tvDevices.TabIndex = 0
+        '
+        'RE_cmsTVDevices
+        '
+        Me.RE_cmsTVDevices.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReplaceDeviceToolStripMenuItem})
+        Me.RE_cmsTVDevices.Name = "RE_cmsTVDevices"
+        Me.RE_cmsTVDevices.Size = New System.Drawing.Size(154, 26)
+        '
+        'ReplaceDeviceToolStripMenuItem
+        '
+        Me.ReplaceDeviceToolStripMenuItem.Name = "ReplaceDeviceToolStripMenuItem"
+        Me.ReplaceDeviceToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
+        Me.ReplaceDeviceToolStripMenuItem.Text = "Replace Device"
         '
         'tpRoomType
         '
@@ -1504,15 +1717,15 @@ Partial Class frmMain
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel3.Controls.Add(Me.GroupBox2, 4, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.GroupBox1, 2, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.RTE_gbProgramInfo, 4, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.RTE_gbDevices, 2, 0)
         Me.TableLayoutPanel3.Controls.Add(Me.RTE_lblRoomTypes, 0, 0)
         Me.TableLayoutPanel3.Controls.Add(Me.RTE_lbRoomTypes, 0, 1)
         Me.TableLayoutPanel3.Controls.Add(Me.RTE_btnNew, 0, 4)
         Me.TableLayoutPanel3.Controls.Add(Me.RTE_btnDelete, 1, 4)
         Me.TableLayoutPanel3.Controls.Add(Me.RTE_btnSave, 4, 4)
         Me.TableLayoutPanel3.Controls.Add(Me.RTE_btnClear, 5, 4)
-        Me.TableLayoutPanel3.Controls.Add(Me.GroupBox3, 4, 2)
+        Me.TableLayoutPanel3.Controls.Add(Me.RTE_gbDefaultState, 4, 2)
         Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel3.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
@@ -1526,19 +1739,19 @@ Partial Class frmMain
         Me.TableLayoutPanel3.Size = New System.Drawing.Size(1302, 636)
         Me.TableLayoutPanel3.TabIndex = 32
         '
-        'GroupBox2
+        'RTE_gbProgramInfo
         '
-        Me.TableLayoutPanel3.SetColumnSpan(Me.GroupBox2, 2)
-        Me.GroupBox2.Controls.Add(Me.RTE_btnBrowseProgram)
-        Me.GroupBox2.Controls.Add(Me.RTE_tbProgramName)
-        Me.GroupBox2.Controls.Add(Me.RTE_lblDefaultProgram)
-        Me.GroupBox2.Location = New System.Drawing.Point(934, 3)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.TableLayoutPanel3.SetRowSpan(Me.GroupBox2, 2)
-        Me.GroupBox2.Size = New System.Drawing.Size(296, 177)
-        Me.GroupBox2.TabIndex = 31
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Program Info"
+        Me.TableLayoutPanel3.SetColumnSpan(Me.RTE_gbProgramInfo, 2)
+        Me.RTE_gbProgramInfo.Controls.Add(Me.RTE_btnBrowseProgram)
+        Me.RTE_gbProgramInfo.Controls.Add(Me.RTE_tbProgramName)
+        Me.RTE_gbProgramInfo.Controls.Add(Me.RTE_lblDefaultProgram)
+        Me.RTE_gbProgramInfo.Location = New System.Drawing.Point(934, 3)
+        Me.RTE_gbProgramInfo.Name = "RTE_gbProgramInfo"
+        Me.TableLayoutPanel3.SetRowSpan(Me.RTE_gbProgramInfo, 2)
+        Me.RTE_gbProgramInfo.Size = New System.Drawing.Size(296, 177)
+        Me.RTE_gbProgramInfo.TabIndex = 31
+        Me.RTE_gbProgramInfo.TabStop = False
+        Me.RTE_gbProgramInfo.Text = "Program Info"
         '
         'RTE_btnBrowseProgram
         '
@@ -1566,23 +1779,23 @@ Partial Class frmMain
         Me.RTE_lblDefaultProgram.TabIndex = 19
         Me.RTE_lblDefaultProgram.Text = "Default Program"
         '
-        'GroupBox1
+        'RTE_gbDevices
         '
-        Me.GroupBox1.Controls.Add(Me.RTE_lbDeviceTypesAvailable)
-        Me.GroupBox1.Controls.Add(Me.RTE_tvDevicesAdded)
-        Me.GroupBox1.Controls.Add(Me.RTE_btnAllDeviceAdd)
-        Me.GroupBox1.Controls.Add(Me.RTE_lblDevicesAdded)
-        Me.GroupBox1.Controls.Add(Me.RTE_btnDeviceAdd)
-        Me.GroupBox1.Controls.Add(Me.RTE_lblDevicesAvailable)
-        Me.GroupBox1.Controls.Add(Me.RTE_btnAllDeviceRemove)
-        Me.GroupBox1.Controls.Add(Me.RTE_btnDeviceRemove)
-        Me.GroupBox1.Location = New System.Drawing.Point(159, 3)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.TableLayoutPanel3.SetRowSpan(Me.GroupBox1, 4)
-        Me.GroupBox1.Size = New System.Drawing.Size(372, 457)
-        Me.GroupBox1.TabIndex = 30
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Devices"
+        Me.RTE_gbDevices.Controls.Add(Me.RTE_lbDeviceTypesAvailable)
+        Me.RTE_gbDevices.Controls.Add(Me.RTE_tvDevicesAdded)
+        Me.RTE_gbDevices.Controls.Add(Me.RTE_btnAllDeviceAdd)
+        Me.RTE_gbDevices.Controls.Add(Me.RTE_lblDevicesAdded)
+        Me.RTE_gbDevices.Controls.Add(Me.RTE_btnDeviceAdd)
+        Me.RTE_gbDevices.Controls.Add(Me.RTE_lblDevicesAvailable)
+        Me.RTE_gbDevices.Controls.Add(Me.RTE_btnAllDeviceRemove)
+        Me.RTE_gbDevices.Controls.Add(Me.RTE_btnDeviceRemove)
+        Me.RTE_gbDevices.Location = New System.Drawing.Point(159, 3)
+        Me.RTE_gbDevices.Name = "RTE_gbDevices"
+        Me.TableLayoutPanel3.SetRowSpan(Me.RTE_gbDevices, 4)
+        Me.RTE_gbDevices.Size = New System.Drawing.Size(372, 457)
+        Me.RTE_gbDevices.TabIndex = 30
+        Me.RTE_gbDevices.TabStop = False
+        Me.RTE_gbDevices.Text = "Devices"
         '
         'RTE_lbDeviceTypesAvailable
         '
@@ -1720,17 +1933,17 @@ Partial Class frmMain
         Me.RTE_btnClear.Text = "Clear"
         Me.RTE_btnClear.UseVisualStyleBackColor = True
         '
-        'GroupBox3
+        'RTE_gbDefaultState
         '
-        Me.GroupBox3.Controls.Add(Me.RTE_rbStateDisabled)
-        Me.GroupBox3.Controls.Add(Me.RTE_rbStateEnabled)
-        Me.GroupBox3.Controls.Add(Me.RTE_cbDefaultState)
-        Me.GroupBox3.Location = New System.Drawing.Point(934, 186)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(296, 192)
-        Me.GroupBox3.TabIndex = 32
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Default State"
+        Me.RTE_gbDefaultState.Controls.Add(Me.RTE_rbStateDisabled)
+        Me.RTE_gbDefaultState.Controls.Add(Me.RTE_rbStateEnabled)
+        Me.RTE_gbDefaultState.Controls.Add(Me.RTE_cbDefaultState)
+        Me.RTE_gbDefaultState.Location = New System.Drawing.Point(934, 186)
+        Me.RTE_gbDefaultState.Name = "RTE_gbDefaultState"
+        Me.RTE_gbDefaultState.Size = New System.Drawing.Size(296, 192)
+        Me.RTE_gbDefaultState.TabIndex = 32
+        Me.RTE_gbDefaultState.TabStop = False
+        Me.RTE_gbDefaultState.Text = "Default State"
         '
         'RTE_rbStateDisabled
         '
@@ -1906,6 +2119,24 @@ Partial Class frmMain
         Me.gbAlarmSettings.TabIndex = 28
         Me.gbAlarmSettings.TabStop = False
         Me.gbAlarmSettings.Text = "Alarm Settings"
+        '
+        'AE_cbErrorAlarmCode
+        '
+        Me.AE_cbErrorAlarmCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.AE_cbErrorAlarmCode.FormattingEnabled = True
+        Me.AE_cbErrorAlarmCode.Location = New System.Drawing.Point(400, 134)
+        Me.AE_cbErrorAlarmCode.Name = "AE_cbErrorAlarmCode"
+        Me.AE_cbErrorAlarmCode.Size = New System.Drawing.Size(198, 21)
+        Me.AE_cbErrorAlarmCode.TabIndex = 28
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(397, 113)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(89, 13)
+        Me.Label14.TabIndex = 27
+        Me.Label14.Text = "Error Alarm Code:"
         '
         'AE_combWarningAlarms
         '
@@ -2111,253 +2342,24 @@ Partial Class frmMain
         Me.tpvConfigurator.Size = New System.Drawing.Size(1316, 668)
         Me.tpvConfigurator.TabIndex = 0
         '
-        'RE_gbRoomStatus
+        'AdminToolStripMenuItem
         '
-        Me.RE_gbRoomStatus.Controls.Add(Me.TextBox3)
-        Me.RE_gbRoomStatus.Controls.Add(Me.Label13)
-        Me.RE_gbRoomStatus.Controls.Add(Me.RE_rbUnoccupied)
-        Me.RE_gbRoomStatus.Controls.Add(Me.RE_rbOccupied)
-        Me.RE_gbRoomStatus.Controls.Add(Me.RE_cbRoomState)
-        Me.RE_gbRoomStatus.Controls.Add(Me.Label12)
-        Me.RE_gbRoomStatus.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RE_gbRoomStatus.Location = New System.Drawing.Point(186, 228)
-        Me.RE_gbRoomStatus.Name = "RE_gbRoomStatus"
-        Me.RE_gbRoomStatus.Size = New System.Drawing.Size(563, 219)
-        Me.RE_gbRoomStatus.TabIndex = 8
-        Me.RE_gbRoomStatus.TabStop = False
-        Me.RE_gbRoomStatus.Text = "Room Status"
+        Me.AdminToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BasicModeToolStripMenuItem, Me.FullVersionToolStripMenuItem})
+        Me.AdminToolStripMenuItem.Name = "AdminToolStripMenuItem"
+        Me.AdminToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
+        Me.AdminToolStripMenuItem.Text = "Admin"
         '
-        'RE_gbRoomSettings
+        'BasicModeToolStripMenuItem
         '
-        Me.RE_gbRoomSettings.Controls.Add(Me.RE_btnResendFirmware)
-        Me.RE_gbRoomSettings.Controls.Add(Me.RE_btnBrowseFirmware)
-        Me.RE_gbRoomSettings.Controls.Add(Me.RE_btnResendProgram)
-        Me.RE_gbRoomSettings.Controls.Add(Me.RE_btnBrowseProgram)
-        Me.RE_gbRoomSettings.Controls.Add(Me.TextBox2)
-        Me.RE_gbRoomSettings.Controls.Add(Me.TextBox1)
-        Me.RE_gbRoomSettings.Controls.Add(Me.RE_lblFirmwareLoaded)
-        Me.RE_gbRoomSettings.Controls.Add(Me.RE_lblProgramLoaded)
-        Me.RE_gbRoomSettings.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RE_gbRoomSettings.Location = New System.Drawing.Point(755, 3)
-        Me.RE_gbRoomSettings.Name = "RE_gbRoomSettings"
-        Me.RE_gbRoomSettings.Size = New System.Drawing.Size(544, 219)
-        Me.RE_gbRoomSettings.TabIndex = 9
-        Me.RE_gbRoomSettings.TabStop = False
-        Me.RE_gbRoomSettings.Text = "Room Settings"
+        Me.BasicModeToolStripMenuItem.Name = "BasicModeToolStripMenuItem"
+        Me.BasicModeToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.BasicModeToolStripMenuItem.Text = "Basic Mode"
         '
-        'Label12
+        'FullVersionToolStripMenuItem
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(23, 31)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(66, 13)
-        Me.Label12.TabIndex = 0
-        Me.Label12.Text = "Room State:"
-        '
-        'RE_cbRoomState
-        '
-        Me.RE_cbRoomState.FormattingEnabled = True
-        Me.RE_cbRoomState.Location = New System.Drawing.Point(95, 28)
-        Me.RE_cbRoomState.Name = "RE_cbRoomState"
-        Me.RE_cbRoomState.Size = New System.Drawing.Size(121, 21)
-        Me.RE_cbRoomState.TabIndex = 1
-        '
-        'RE_lblProgramLoaded
-        '
-        Me.RE_lblProgramLoaded.AutoSize = True
-        Me.RE_lblProgramLoaded.Location = New System.Drawing.Point(20, 34)
-        Me.RE_lblProgramLoaded.Name = "RE_lblProgramLoaded"
-        Me.RE_lblProgramLoaded.Size = New System.Drawing.Size(88, 13)
-        Me.RE_lblProgramLoaded.TabIndex = 0
-        Me.RE_lblProgramLoaded.Text = "Program Loaded:"
-        '
-        'RE_lblFirmwareLoaded
-        '
-        Me.RE_lblFirmwareLoaded.AutoSize = True
-        Me.RE_lblFirmwareLoaded.Location = New System.Drawing.Point(17, 60)
-        Me.RE_lblFirmwareLoaded.Name = "RE_lblFirmwareLoaded"
-        Me.RE_lblFirmwareLoaded.Size = New System.Drawing.Size(91, 13)
-        Me.RE_lblFirmwareLoaded.TabIndex = 1
-        Me.RE_lblFirmwareLoaded.Text = "Firmware Loaded:"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(132, 31)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(111, 20)
-        Me.TextBox1.TabIndex = 2
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(132, 57)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(111, 20)
-        Me.TextBox2.TabIndex = 3
-        '
-        'RE_btnBrowseProgram
-        '
-        Me.RE_btnBrowseProgram.Location = New System.Drawing.Point(283, 31)
-        Me.RE_btnBrowseProgram.Name = "RE_btnBrowseProgram"
-        Me.RE_btnBrowseProgram.Size = New System.Drawing.Size(77, 22)
-        Me.RE_btnBrowseProgram.TabIndex = 4
-        Me.RE_btnBrowseProgram.Text = "Browse.."
-        Me.RE_btnBrowseProgram.UseVisualStyleBackColor = True
-        '
-        'RE_btnResendProgram
-        '
-        Me.RE_btnResendProgram.Location = New System.Drawing.Point(381, 31)
-        Me.RE_btnResendProgram.Name = "RE_btnResendProgram"
-        Me.RE_btnResendProgram.Size = New System.Drawing.Size(77, 22)
-        Me.RE_btnResendProgram.TabIndex = 5
-        Me.RE_btnResendProgram.Text = "Resend"
-        Me.RE_btnResendProgram.UseVisualStyleBackColor = True
-        '
-        'RE_btnBrowseFirmware
-        '
-        Me.RE_btnBrowseFirmware.Location = New System.Drawing.Point(283, 55)
-        Me.RE_btnBrowseFirmware.Name = "RE_btnBrowseFirmware"
-        Me.RE_btnBrowseFirmware.Size = New System.Drawing.Size(77, 22)
-        Me.RE_btnBrowseFirmware.TabIndex = 6
-        Me.RE_btnBrowseFirmware.Text = "Browse.."
-        Me.RE_btnBrowseFirmware.UseVisualStyleBackColor = True
-        '
-        'RE_btnResendFirmware
-        '
-        Me.RE_btnResendFirmware.Location = New System.Drawing.Point(381, 55)
-        Me.RE_btnResendFirmware.Name = "RE_btnResendFirmware"
-        Me.RE_btnResendFirmware.Size = New System.Drawing.Size(77, 22)
-        Me.RE_btnResendFirmware.TabIndex = 7
-        Me.RE_btnResendFirmware.Text = "Resend"
-        Me.RE_btnResendFirmware.UseVisualStyleBackColor = True
-        '
-        'RE_rbOccupied
-        '
-        Me.RE_rbOccupied.AutoSize = True
-        Me.RE_rbOccupied.Location = New System.Drawing.Point(46, 83)
-        Me.RE_rbOccupied.Name = "RE_rbOccupied"
-        Me.RE_rbOccupied.Size = New System.Drawing.Size(71, 17)
-        Me.RE_rbOccupied.TabIndex = 2
-        Me.RE_rbOccupied.Text = "Occupied"
-        Me.RE_rbOccupied.UseVisualStyleBackColor = True
-        '
-        'RE_rbUnoccupied
-        '
-        Me.RE_rbUnoccupied.AutoSize = True
-        Me.RE_rbUnoccupied.Checked = True
-        Me.RE_rbUnoccupied.Location = New System.Drawing.Point(130, 83)
-        Me.RE_rbUnoccupied.Name = "RE_rbUnoccupied"
-        Me.RE_rbUnoccupied.Size = New System.Drawing.Size(86, 17)
-        Me.RE_rbUnoccupied.TabIndex = 3
-        Me.RE_rbUnoccupied.TabStop = True
-        Me.RE_rbUnoccupied.Text = "Un-occupied"
-        Me.RE_rbUnoccupied.UseVisualStyleBackColor = True
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(23, 114)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(68, 13)
-        Me.Label13.TabIndex = 4
-        Me.Label13.Text = "Customer ID:"
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Location = New System.Drawing.Point(109, 111)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(107, 20)
-        Me.TextBox3.TabIndex = 5
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(397, 113)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(89, 13)
-        Me.Label14.TabIndex = 27
-        Me.Label14.Text = "Error Alarm Code:"
-        '
-        'AE_cbErrorAlarmCode
-        '
-        Me.AE_cbErrorAlarmCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.AE_cbErrorAlarmCode.FormattingEnabled = True
-        Me.AE_cbErrorAlarmCode.Location = New System.Drawing.Point(400, 134)
-        Me.AE_cbErrorAlarmCode.Name = "AE_cbErrorAlarmCode"
-        Me.AE_cbErrorAlarmCode.Size = New System.Drawing.Size(198, 21)
-        Me.AE_cbErrorAlarmCode.TabIndex = 28
-        '
-        'GroupBox8
-        '
-        Me.GroupBox8.Controls.Add(Me.Label15)
-        Me.GroupBox8.Controls.Add(Me.RE_tvDevices)
-        Me.GroupBox8.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox8.Location = New System.Drawing.Point(755, 228)
-        Me.GroupBox8.Name = "GroupBox8"
-        Me.TableLayoutPanel2.SetRowSpan(Me.GroupBox8, 2)
-        Me.GroupBox8.Size = New System.Drawing.Size(544, 347)
-        Me.GroupBox8.TabIndex = 10
-        Me.GroupBox8.TabStop = False
-        Me.GroupBox8.Text = "Devices"
-        '
-        'RE_tvDevices
-        '
-        Me.RE_tvDevices.ContextMenuStrip = Me.RE_cmsTVDevices
-        Me.RE_tvDevices.Location = New System.Drawing.Point(6, 43)
-        Me.RE_tvDevices.Name = "RE_tvDevices"
-        TreeNode1.Name = "Node4"
-        TreeNode1.Text = "TSTAT_20"
-        TreeNode2.Name = "Node0"
-        TreeNode2.Text = "TSTAT"
-        TreeNode3.Name = "Node5"
-        TreeNode3.Text = "LG_01"
-        TreeNode4.Name = "Node6"
-        TreeNode4.Text = "LG_02"
-        TreeNode5.Name = "Node7"
-        TreeNode5.Text = "LG_03"
-        TreeNode6.Name = "Node8"
-        TreeNode6.Text = "LG_04"
-        TreeNode7.Name = "Node9"
-        TreeNode7.Text = "LG_05"
-        TreeNode8.Name = "Node10"
-        TreeNode8.Text = "LG_06"
-        TreeNode9.Name = "Node11"
-        TreeNode9.Text = "LG_07"
-        TreeNode10.Name = "Node12"
-        TreeNode10.Text = "LG_08"
-        TreeNode11.Name = "Node13"
-        TreeNode11.Text = "LG_08"
-        TreeNode12.Name = "Node1"
-        TreeNode12.Text = "LG"
-        TreeNode13.Name = "Node14"
-        TreeNode13.Text = "TV_01"
-        TreeNode14.Name = "Node2"
-        TreeNode14.Text = "TV"
-        TreeNode15.Name = "Node3"
-        TreeNode15.Text = "SHADES"
-        Me.RE_tvDevices.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode2, TreeNode12, TreeNode14, TreeNode15})
-        Me.RE_tvDevices.Size = New System.Drawing.Size(177, 298)
-        Me.RE_tvDevices.TabIndex = 0
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(6, 27)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(46, 13)
-        Me.Label15.TabIndex = 1
-        Me.Label15.Text = "Devices"
-        '
-        'RE_cmsTVDevices
-        '
-        Me.RE_cmsTVDevices.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReplaceDeviceToolStripMenuItem})
-        Me.RE_cmsTVDevices.Name = "RE_cmsTVDevices"
-        Me.RE_cmsTVDevices.Size = New System.Drawing.Size(154, 26)
-        '
-        'ReplaceDeviceToolStripMenuItem
-        '
-        Me.ReplaceDeviceToolStripMenuItem.Name = "ReplaceDeviceToolStripMenuItem"
-        Me.ReplaceDeviceToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
-        Me.ReplaceDeviceToolStripMenuItem.Text = "Replace Device"
+        Me.FullVersionToolStripMenuItem.Name = "FullVersionToolStripMenuItem"
+        Me.FullVersionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.FullVersionToolStripMenuItem.Text = "Full Version"
         '
         'frmMain
         '
@@ -2413,20 +2415,27 @@ Partial Class frmMain
         Me.tlpEventEditor.PerformLayout()
         Me.tpRoomEditor.ResumeLayout(False)
         Me.TableLayoutPanel2.ResumeLayout(False)
-        Me.gbRoomDetails.ResumeLayout(False)
-        Me.gbRoomDetails.PerformLayout()
+        Me.RE_gbRoomDetails.ResumeLayout(False)
+        Me.RE_gbRoomDetails.PerformLayout()
         Me.RE_tcRoomViewer.ResumeLayout(False)
         Me.RE_tbByFloor.ResumeLayout(False)
         Me.RE_tbByType.ResumeLayout(False)
+        Me.RE_gbRoomStatus.ResumeLayout(False)
+        Me.RE_gbRoomStatus.PerformLayout()
+        Me.RE_gbRoomSettings.ResumeLayout(False)
+        Me.RE_gbRoomSettings.PerformLayout()
+        Me.RE_gbDevices.ResumeLayout(False)
+        Me.RE_gbDevices.PerformLayout()
+        Me.RE_cmsTVDevices.ResumeLayout(False)
         Me.tpRoomType.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel3.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
+        Me.RTE_gbProgramInfo.ResumeLayout(False)
+        Me.RTE_gbProgramInfo.PerformLayout()
+        Me.RTE_gbDevices.ResumeLayout(False)
+        Me.RTE_gbDevices.PerformLayout()
+        Me.RTE_gbDefaultState.ResumeLayout(False)
+        Me.RTE_gbDefaultState.PerformLayout()
         Me.tpDeviceType.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
@@ -2437,13 +2446,6 @@ Partial Class frmMain
         Me.AE_gbAlarmType.ResumeLayout(False)
         Me.AE_gbAlarmType.PerformLayout()
         Me.tpvConfigurator.ResumeLayout(False)
-        Me.RE_gbRoomStatus.ResumeLayout(False)
-        Me.RE_gbRoomStatus.PerformLayout()
-        Me.RE_gbRoomSettings.ResumeLayout(False)
-        Me.RE_gbRoomSettings.PerformLayout()
-        Me.GroupBox8.ResumeLayout(False)
-        Me.GroupBox8.PerformLayout()
-        Me.RE_cmsTVDevices.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2488,9 +2490,7 @@ Partial Class frmMain
     Friend WithEvents EE_tbAlarmCode As System.Windows.Forms.TextBox
     Friend WithEvents tpRoomEditor As System.Windows.Forms.TabPage
     Friend WithEvents TableLayoutPanel2 As System.Windows.Forms.TableLayoutPanel
-    Friend WithEvents gbRoomDetails As System.Windows.Forms.GroupBox
-    Friend WithEvents RE_tbSTBip As System.Windows.Forms.TextBox
-    Friend WithEvents RE_lblSTBAddress As System.Windows.Forms.Label
+    Friend WithEvents RE_gbRoomDetails As System.Windows.Forms.GroupBox
     Friend WithEvents RE_tbFloor As System.Windows.Forms.TextBox
     Friend WithEvents RE_lblFloor As System.Windows.Forms.Label
     Friend WithEvents RE_tbMAC As System.Windows.Forms.TextBox
@@ -2513,11 +2513,11 @@ Partial Class frmMain
     Friend WithEvents RE_btnDelete As System.Windows.Forms.Button
     Friend WithEvents tpRoomType As System.Windows.Forms.TabPage
     Friend WithEvents TableLayoutPanel3 As System.Windows.Forms.TableLayoutPanel
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents RTE_gbProgramInfo As System.Windows.Forms.GroupBox
     Friend WithEvents RTE_btnBrowseProgram As System.Windows.Forms.Button
     Friend WithEvents RTE_tbProgramName As System.Windows.Forms.TextBox
     Friend WithEvents RTE_lblDefaultProgram As System.Windows.Forms.Label
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents RTE_gbDevices As System.Windows.Forms.GroupBox
     Friend WithEvents RTE_lbDeviceTypesAvailable As System.Windows.Forms.ListBox
     Friend WithEvents RTE_tvDevicesAdded As System.Windows.Forms.TreeView
     Friend WithEvents RTE_btnAllDeviceAdd As System.Windows.Forms.Button
@@ -2532,7 +2532,7 @@ Partial Class frmMain
     Friend WithEvents RTE_btnDelete As System.Windows.Forms.Button
     Friend WithEvents RTE_btnSave As System.Windows.Forms.Button
     Friend WithEvents RTE_btnClear As System.Windows.Forms.Button
-    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents RTE_gbDefaultState As System.Windows.Forms.GroupBox
     Friend WithEvents tpDeviceType As System.Windows.Forms.TabPage
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents AE_lbDevices As System.Windows.Forms.ListBox
@@ -2644,10 +2644,13 @@ Partial Class frmMain
     Friend WithEvents RE_lblProgramLoaded As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents AE_cbErrorAlarmCode As System.Windows.Forms.ComboBox
-    Friend WithEvents GroupBox8 As System.Windows.Forms.GroupBox
+    Friend WithEvents RE_gbDevices As System.Windows.Forms.GroupBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents RE_tvDevices As System.Windows.Forms.TreeView
     Friend WithEvents RE_cmsTVDevices As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents ReplaceDeviceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AdminToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BasicModeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FullVersionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

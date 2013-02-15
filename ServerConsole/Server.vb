@@ -315,8 +315,8 @@ Module Server
         '               msg(1) = Room Name
         '               msg(2) = Device Type
         '               msg(3) = Device Local ID
-        '               msg(4) = Attribute
-        '               msg(5) = Value
+        'msg(4) = Attribute
+        'msg(5) = Value
         '***************
         Dim sqlCmd As New SqlCommand
         sqlCmd.Connection = connectToDatabase()
@@ -329,7 +329,7 @@ Module Server
                                 + "', @RoomName = '" + msg(1) _
                                 + "',@DeviceType = '" + msg(2) _
                                 + "',@LocalID = " + msg(3) _
-                                + ",@Attribute = '" + msg(4) _
+                                + " ,@Attribute = '" + msg(4) _
                                 + "', @Value = '" + msg(5) _
                                 + "' Select 'Return Value' = @return_value"
         Try
